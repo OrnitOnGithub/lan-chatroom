@@ -7,7 +7,7 @@ import sys
 import os
 
 auto_open_browser = True
-browser = "safari"
+browser = "firefox"
 msg_path = "public/messages.txt"
 username_path = "username.txt"
 with open(username_path, "r") as file:
@@ -30,9 +30,7 @@ def sendmsg(msg):
     with open(msg_path, "a") as file:
         file.write("\n" + username + " : " + msg)
     net.send() # Sync
-    net.send() # net.send is unreliable, so run it three
-    net.send() # times because third time's the charm!
-
+    net.send() # net.send is unreliable, so run it twice because second time's the charm!
 def listen():
     net.listen()
 
@@ -49,7 +47,7 @@ def add_text():
     text = request.form['text']
     print(f"Entered Text: {text}")  
     sendmsg(text)
-    time.sleep(0.6) # Lazy fix to stop race condition
+    time.sleep(1) # Lazy fix to stop race condition
     with open(msg_path, 'r') as file:
         file_content = file.read()
     return render_template('index.html', file_content=file_content)
