@@ -3,6 +3,7 @@
 - [ ] Ping to find users
 - [ ] Display list of users
 - [ ] Improve message synchronisation
+- [x] Make GUI
 
 ## Message reset issue
 

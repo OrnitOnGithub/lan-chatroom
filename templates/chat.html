@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-    <h1>Chat</h1>
-    <pre id="file-content">{{ file_content }}</pre>
 
-    <script>
-        function refreshText() {
-            fetch('/refresh_text')
-                .then(response => response.text())
-                .then(data => {
-                    document.getElementById('file-content').innerHTML = data;
-                });
-        }
+<pre id="file-content">{{ file_content }}</pre>
 
-        // Refresh every 5 seconds (adjust as needed)
-        setInterval(refreshText, 500);
-    </script>
-</body>
+
+<script>
+    function refreshText() {
+        fetch('/refresh_text')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('file-content').innerHTML = data;
+            });
+    }
+    // Refresh every 5 seconds (adjust as needed)
+    setInterval(refreshText, 500);
+</script>
 </html>

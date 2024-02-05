@@ -6,35 +6,24 @@ import time
 import sys
 import os
 
-auto_open_browser = True
-browser = "firefox"
+open_browser = True     # Wether the app will open your browser for you
+browser = "safari"      # Which browser to open.
 msg_path = "public/messages.txt"
 username_path = "username.txt"
 with open(username_path, "r") as file:
     username = file.read()
+app = Flask(__name__)
 
-def main():
-    """
-    with open(msg_path, "a") as file:
-        file.write("\n" + username + " Joined the Chat")
-    net.send()
-    while True:
-        msg = input()
-        with open(msg_path, "a") as file:
-            file.write("\n" + username + " : " + msg)
-        net.send() # Sync
-    """
-    pass
 
 def sendmsg(msg):
     with open(msg_path, "a") as file:
         file.write("\n" + username + " : " + msg)
     net.send() # Sync
     net.send() # net.send is unreliable, so run it twice because second time's the charm!
+
 def listen():
     net.listen()
 
-app = Flask(__name__)
 
 @app.route('/')
 def index():
@@ -58,23 +47,19 @@ def refresh_text():
         file_content = file.read()
     return render_template('chat.html', file_content=file_content)
 
+
 if __name__ == '__main__':
     try:
         listen_thread = threading.Thread(target=listen)
         listen_thread.start()
 
-        main_thread = threading.Thread(target=main)
-        main_thread.start()
-
-        if auto_open_browser:
+        if open_browser:
             webbrowser.get(browser).open('http://127.0.0.1:5000')
 
         # Run the Flask app in a separate thread
         flask_thread = threading.Thread(target=app.run, kwargs={'debug': True, 'use_reloader': False, 'threaded': True})
         flask_thread.start()
-
         listen_thread.join()
-        main_thread.join()
         flask_thread.join()
 
     except KeyboardInterrupt: # Ctrl+C
