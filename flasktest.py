@@ -7,6 +7,7 @@ import sys
 import os
 
 auto_open_browser = True
+browser = "safari"
 msg_path = "public/messages.txt"
 username_path = "username.txt"
 with open(username_path, "r") as file:
@@ -66,7 +67,7 @@ if __name__ == '__main__':
         main_thread.start()
 
         if auto_open_browser:
-            webbrowser.get('safari').open('http://127.0.0.1:5000')
+            webbrowser.get(default_browser).open('http://127.0.0.1:5000')
 
         # Run the Flask app in a separate thread
         flask_thread = threading.Thread(target=app.run, kwargs={'debug': True, 'use_reloader': False, 'threaded': True})
