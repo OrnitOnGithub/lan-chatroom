@@ -1,10 +1,5 @@
 
-Ornit : hello
-Ornit : FUCK
-Ornit : wth is this???
-Ornit : hi
-Ornit : why does it only work one way?
-Ornit : wtf
-Ornit : a
-Ornit : a
-Ornit : fuckass program
+Ornit : race condition again
+Ornit : oopsie
+Ornit : so now its even more unreliable
+Ornit : but when messages *do* get sent, they make it
