@@ -3,17 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flask Text Input</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
-    <h1>Flask Text Input</h1>
-    <form method="post" action="{{ url_for('add_text') }}">
-        <label for="text">Enter Text:</label>
-        <input type="text" id="text" name="text" required>
-        <input type="submit" value="Submit">
-    </form>
-
+    <h1>Chat</h1>
     <pre id="file-content">{{ file_content }}</pre>
 
     <script>

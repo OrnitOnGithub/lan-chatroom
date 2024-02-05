@@ -51,6 +51,12 @@ def add_text():
         file_content = file.read()
     return render_template('index.html', file_content=file_content)
 
+@app.route('/refresh_text')
+def refresh_text():
+    with open(msg_path, 'r') as file:
+        file_content = file.read()
+    return render_template('chat.html', file_content=file_content)
+
 if __name__ == '__main__':
     try:
         listen_thread = threading.Thread(target=listen)

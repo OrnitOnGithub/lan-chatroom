@@ -2,8 +2,6 @@ import zipfile
 import socket
 import io
 import os
-import main
-import flasktest
 # I think all of this is already in the python standard library but fuck i know
 
 PORT = 12345 # Default is 12345. use set_port() to change this.
@@ -55,9 +53,6 @@ def listen():
     while True:
         data, addr = server_socket.recvfrom(1024)  # 1 kb of data
         folder_zip = io.BytesIO(data)
-
-        if data:
-            flasktest.add_text()
 
         with zipfile.ZipFile(folder_zip, 'r') as archive:
             archive.extractall('./public')
