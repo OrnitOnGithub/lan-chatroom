@@ -47,7 +47,7 @@ def ping(username):
     client_socket.sendto(username.encode('utf-8'), ('<broadcast>', PING_PORT))
 
 def receive_ping():
-    global user_list
+    global user_list, last_execution_time  # Declare last_execution_time as global
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     server_socket.bind(('0.0.0.0', PING_PORT))
@@ -56,6 +56,7 @@ def receive_ping():
         data, addr = server_socket.recvfrom(1024)
         username = data.decode('utf-8')
 
+        user_found = False
         for user in user_list:
             if user['username'] == username:
                 user['time_since_ping'] = TIMEOUT
@@ -67,14 +68,17 @@ def receive_ping():
         current_time = time.time()
         if current_time - last_execution_time > 1: # If it's been more than one second
             last_execution_time = time.time()      # set time to actual time
-            # Under here code that needs to run once per second
-            # can be executed.
+            users_to_remove = []  # Create a list to store users to be removed
+
             for user in user_list:
                 user['time_since_ping'] -= 1
                 if user['time_since_ping'] == 0:
-                    #print(f"{user['username']} is offline.")
-                    user_list.remove(user)
+                    # print(f"{user['username']} is offline.")
+                    users_to_remove.append(user)
 
+            # Remove users after the iteration is complete
+            for user in users_to_remove:
+                user_list.remove(user)
 
 
 
