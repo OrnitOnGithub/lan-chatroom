@@ -1,6 +1,5 @@
 import network as net
 import threading
-import time
 import sys
 import os
 

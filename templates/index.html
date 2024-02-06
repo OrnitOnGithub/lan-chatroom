@@ -21,7 +21,7 @@
                     }
                     // Refresh every 5 seconds (adjust as needed)
                     setInterval(refreshText, 500);
-                    </script>
+                </script>
             </div>
             <form method="post" action="{{ url_for('add_text') }}">
                 <label for="text">Chat</label>
@@ -68,6 +68,19 @@
         </div>
 
         <div class="container debug-bordered" id="div2">
+            <h1>Online users</h1>
+            <pre id="online-users"></pre>
+            <script>
+                function refreshOnlineUsers() {
+                    fetch('/refresh_online_users')
+                        .then(response => response.text())
+                        .then(data => {
+                            document.getElementById('online-users').textContent = data;
+                        });
+                }
+                // Refresh every 5 seconds (adjust as needed)
+                setInterval(refreshOnlineUsers, 2000);
+            </script>
             <h1>Information</h1>
             <div class="debug-bordered padded">
                 <main-text>
@@ -92,7 +105,7 @@
                     Thank you.
                 </main-text>
             </div>
-            <h2>Legal & Licenses</h2>
+            <h1>Legal & Licenses</h1>
             <div class="debug-bordered padded">
 
                 <license-text class="padded">

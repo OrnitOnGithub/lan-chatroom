@@ -68,6 +68,7 @@ def receive_ping():
         current_time = time.time()
         if current_time - last_execution_time > 1: # If it's been more than one second
             last_execution_time = time.time()      # set time to actual time
+            # Everything under this will be ran once every second.
             users_to_remove = []  # Create a list to store users to be removed
 
             for user in user_list:
