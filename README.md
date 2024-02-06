@@ -19,7 +19,7 @@ in your terminal. You can also just click on `Code > Download zip` on GitHub if 
 
 Open the folder you just downloaded or cloned.
 
-Set your username by editing `username.txt`
+Set your username by editing `username.txt`. There is a 20 character limit and only the first line of the file is taken into account.
 
 Install the dependencies
 ```
@@ -30,6 +30,8 @@ If that doesn't work, try:
 pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org flask --user 
 ```
 If this **STILL** doesn't work, make sure you're using python interpret 3.10+
+
+If somehow it still still doesn't work, you can use the text-based version by running `noflask.py`. However this script is a last resort, it is outdated.
 
 Run `main.py`. Either by running it in VSCode or by running
 ```
@@ -63,6 +65,8 @@ This is a python web app that makes use of `Flask` and an old network library I 
 For extra and more detailed information, check the `docs` directory.
 
 ## Plans for the Future
+
+(NOTE: Everything is in `docs/todo.md`)
 
 Features to add, in order:
 

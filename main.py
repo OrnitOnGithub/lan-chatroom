@@ -11,7 +11,8 @@ browser = "safari"      # Which browser to open.
 msg_path = "public/messages.txt"
 username_path = "username.txt"
 with open(username_path, "r") as file:
-    username = file.read()
+    first_line = file.readline()
+    username = first_line[:20]
 app = Flask(__name__)
 
 

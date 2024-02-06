@@ -29,14 +29,15 @@
                 <input type="submit" value="Submit">
             </form>
             <script>
-                // SOLUTION COURTESY OF ERDABERDA, NO IDEA HOW IT WORKS
+                // SOLUTION COURTESY OF ERDABERDA/ChatGPT, NO IDEA HOW IT WORKS
 
                 document.querySelector('form').addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevent the default form submission
     
                 const textInput = document.getElementById('text');
                 const textValue = textInput.value;
-    
+                
+                textInput.value = ''; // Stop spamming
                 // Submit the form data via AJAX
                 fetch('/add_text', {
                     method: 'POST',
@@ -54,7 +55,6 @@
                 }).then(data => {
                     // Update the chat box with the new message
                     document.getElementById('file-content').innerHTML += '<br>' + textValue;
-                    textInput.value = ''; // Clear the input field
                 }).catch(error => {
                     console.error('There has been a problem with your fetch operation:', error);
                 });
@@ -73,6 +73,8 @@
                 <main-text>
                     Hello and welcome to the chatroom. <br>
                     <br>
+                    A list of all online users will be displayed here at some point. <br>
+                    <br>
                     We are currently even before the alpha release so
                     you might encounter a few issues using this chatroom. <br>
                     A current known issue is a race condition between the network
@@ -80,9 +82,12 @@
                     spontaneously clearing the chat. <br>
                     The networking library is quite a mess and may cause some problems of its own. <br>
                     <br>
-                    Also, as was mentioned in the README, you cannot see chats from before you joined the chatroom. <br>
+                    If you want to report issues, first of all check the todo list
+                    to make sure this isn't already planned, and then please do so
+                    <a href="https://github.com/OrnitOnGithub/lan-chatroom/issues">here</a>. <br>
                     <br>
-                    If you want to report issues, please do so here <a href="https://github.com/OrnitOnGithub/lan-chatroom/issues">here</a>. <br>
+                    Any extra information can be found in the README file. If you're having trouble,
+                    read it. <br>
                     <br>
                     Thank you.
                 </main-text>
@@ -91,53 +96,56 @@
         <div class="container debug-bordered" id="div3">
             <h1>Other stuff</h1>
             <h2>Licenses</h2>
-            <license-text>
-                # This project <br>
-                <br>
-                Copyright (c) 2024 Ornithopter747<br>
-                <br>
-                Permission is hereby granted, free of charge, to any person obtaining a copy
-                of this software and associated documentation files (the "Software"), to deal
-                in the Software without restriction, including without limitation the rights
-                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-                copies of the Software, and to permit persons to whom the Software is
-                furnished to do so, subject to the following conditions:<br>
-                <br>
-                The above copyright notice and this permission notice shall be included in all
-                copies or substantial portions of the Software.<br>
-                <br>
-                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-                SOFTWARE.<br>
-                <br>
-                # network.py<br>
-                <br>
-                NOTE: This license is for a newer version of network.py. In the version in use, andrei73457 was not a contributor yet and "data_handler.py" did not exist.<br>
-                <br>
-                Copyright (c) 2024 OrnitOnGithub, andrei73457<br>
-                <br>
-                Permission is hereby granted, free of charge, to any person obtaining a copy
-                of the contents of the "network.py" and "data_handler.py" files and associated documentation files (the "Software"), to deal
-                in the Software without restriction, including without limitation the rights
-                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-                copies of the Software, and to permit persons to whom the Software is
-                furnished to do so, subject to the following conditions:<br>
-                <br>
-                The above copyright notice and this permission notice shall be included in all
-                copies or substantial portions of the "network.py" and "data_handler.py" files.<br>
-                <br>
-                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-                SOFTWARE.<br>
-            </license-text>
+            <div class="debug-bordered padded">
+
+                <license-text class="padded">
+                    # This project <br>
+                    <br>
+                    Copyright (c) 2024 Ornithopter747<br>
+                    <br>
+                    Permission is hereby granted, free of charge, to any person obtaining a copy
+                    of this software and associated documentation files (the "Software"), to deal
+                    in the Software without restriction, including without limitation the rights
+                    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                    copies of the Software, and to permit persons to whom the Software is
+                    furnished to do so, subject to the following conditions:<br>
+                    <br>
+                    The above copyright notice and this permission notice shall be included in all
+                    copies or substantial portions of the Software.<br>
+                    <br>
+                    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                    SOFTWARE.<br>
+                    <br>
+                    # network.py<br>
+                    <br>
+                    NOTE: This license is for a newer version of network.py. In the version in use, andrei73457 was not a contributor yet and "data_handler.py" did not exist.<br>
+                    <br>
+                    Copyright (c) 2024 OrnitOnGithub, andrei73457<br>
+                    <br>
+                    Permission is hereby granted, free of charge, to any person obtaining a copy
+                    of the contents of the "network.py" and "data_handler.py" files and associated documentation files (the "Software"), to deal
+                    in the Software without restriction, including without limitation the rights
+                    to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                    copies of the Software, and to permit persons to whom the Software is
+                    furnished to do so, subject to the following conditions:<br>
+                    <br>
+                    The above copyright notice and this permission notice shall be included in all
+                    copies or substantial portions of the "network.py" and "data_handler.py" files.<br>
+                    <br>
+                    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                    IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                    FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                    AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                    LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                    OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                    SOFTWARE.<br>
+                </license-text>
+            </div>
         </div>
     </div>
 

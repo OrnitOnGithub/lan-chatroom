@@ -1,10 +1,9 @@
 # High-level TODO
 - [x] Fix message getting reset issue
 - [x] Make GUI
-- [ ] Make username.txt more restrictive
-- [ ] Fix message scroll issue (delete previous messages)
+- [x] Make username.txt more restrictive
 - [ ] Ping to find users
-- [ ] Display list of users
+  - [ ] Display list of users
 - [ ] Improve message synchronisation
 
 ## Pinging
