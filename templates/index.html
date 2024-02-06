@@ -8,8 +8,8 @@
 </head>
 <body>
     <div id ="wrapper">
-        <div class="container" id="div1">
-            <div class="chatbox" id="chatbox-container">
+        <div class="container debug-bordered" id="div1">
+            <div class="chatbox debug-bordered" id="chatbox-container">
                 <pre id="file-content">{{ file_content }}</pre>
                 <script>
                     function refreshText() {
@@ -35,19 +35,77 @@
             </script>
         </div>
 
-
-
-
-        <div class="container" id="div2">
+        <div class="container debug-bordered" id="div2">
             <h1>Information</h1>
-            <div class="bordered padded">
+            <div class="debug-bordered padded">
                 <main-text>
-                    Hello
+                    Hello and welcome to the chatroom. <br>
+                    <br>
+                    We are currently even before the alpha release so
+                    you might encounter a few issues using this chatroom. <br>
+                    A current known issue is a race condition between the network
+                    library and the flask web app, sometimes resulting in
+                    spontaneously clearing the chat. <br>
+                    The networking library is quite a mess and ay cause some problems of its own. <br>
+                    <br>
+                    Also, as was mentioned in the README, you cannot see chats from before you joined the chatroom. <br>
+                    <br>
+                    If you want to report issues, please do so here <a href="https://github.com/OrnitOnGithub/lan-chatroom/issues">here</a>. <br>
+                    <br>
+                    Thank you.
                 </main-text>
             </div>
         </div>
-        <div class="container" id="div3">
-            <h1>random content</h1>
+        <div class="container debug-bordered" id="div3">
+            <h1>Other stuff</h1>
+            <h2>Licenses</h2>
+            <license-text>
+                # This project <br>
+                <br>
+                Copyright (c) 2024 Ornithopter747<br>
+                <br>
+                Permission is hereby granted, free of charge, to any person obtaining a copy
+                of this software and associated documentation files (the "Software"), to deal
+                in the Software without restriction, including without limitation the rights
+                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                copies of the Software, and to permit persons to whom the Software is
+                furnished to do so, subject to the following conditions:<br>
+                <br>
+                The above copyright notice and this permission notice shall be included in all
+                copies or substantial portions of the Software.<br>
+                <br>
+                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                SOFTWARE.<br>
+                <br>
+                # network.py<br>
+                <br>
+                NOTE: This license is for a newer version of network.py. In the version in use, andrei73457 was not a contributor yet and "data_handler.py" did not exist.<br>
+                <br>
+                Copyright (c) 2024 OrnitOnGithub, andrei73457<br>
+                <br>
+                Permission is hereby granted, free of charge, to any person obtaining a copy
+                of the contents of the "network.py" and "data_handler.py" files and associated documentation files (the "Software"), to deal
+                in the Software without restriction, including without limitation the rights
+                to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+                copies of the Software, and to permit persons to whom the Software is
+                furnished to do so, subject to the following conditions:<br>
+                <br>
+                The above copyright notice and this permission notice shall be included in all
+                copies or substantial portions of the "network.py" and "data_handler.py" files.<br>
+                <br>
+                THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+                IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+                FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+                AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+                LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+                OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+                SOFTWARE.<br>
+            </license-text>
         </div>
     </div>
 

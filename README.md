@@ -41,6 +41,8 @@ If you do not want the app to automatically open the browser for you, you must v
 
 Now that your browser opened the app, you can start chatting.
 
+If your browser says "page not found" or anything along those lines, just try reloading the page. This is a pseudo race condition between the browser openning and the web app starting.
+
 To close the app, press `ctrl+c` in your terminal.
 
 /!\ **WARNING:** You will only recieve and see messages that are sent while the script is running on your computer.
