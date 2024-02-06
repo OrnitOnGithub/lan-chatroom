@@ -12,6 +12,7 @@ def main():
         # Access user_list or perform other tasks using the module name as a prefix
         print(network.user_list)
         time.sleep(1)
+        network.ping("username1")
 
 if __name__ == "__main__":
-    main()
+    main() 

@@ -50,30 +50,27 @@ def receive_ping():
     global user_list
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    server_socket.bind(('0.0.0.0', PORT))
+    server_socket.bind(('0.0.0.0', PING_PORT))
 
     while True:
         data, addr = server_socket.recvfrom(1024)
         username = data.decode('utf-8')
 
-
         for user in user_list:
             if user['username'] == username:
                 user['time_since_ping'] = TIMEOUT
-                return  # Reset time_since_ping and exit the function
-
-        user_list.append({"username": username, "time_since_ping": TIMEOUT})
+                user_found = True
+                break  # Exit the loop if the user is found
+        if not user_found:
+            user_list.append({"username": username, "time_since_ping": TIMEOUT})
 
         current_time = time.time()
- 
         if current_time - last_execution_time > 1: # If it's been more than one second
             last_execution_time = time.time()      # set time to actual time
-
             # Under here code that needs to run once per second
             # can be executed.
             for user in user_list:
                 user['time_since_ping'] -= 1
-
                 if user['time_since_ping'] == 0:
                     #print(f"{user['username']} is offline.")
                     user_list.remove(user)
