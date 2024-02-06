@@ -11,21 +11,21 @@ body, #wrapper, #div1, #div2, #div3 {
     width: 100%;
     overflow: hidden;
 }
-#div1, #div2, #div3 {
+#div1, #div2 {
     float: left;
     height: 100vh;
     overflow: auto;
 }
 #div1 {
-    width: 60%;
+    width: 70%;
 }
-#div2, #div3 {
-    width: 19.5%;
+#div2 {
+    width: 29.5%;
 }
 
 .chatbox {
     overflow: scroll;
-    height: 90vh;
+    height: 92vh;
 }
 
 /* extra styles */

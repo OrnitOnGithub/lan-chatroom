@@ -1,5 +1,6 @@
 import zipfile
 import socket
+import time
 import io
 import os
 # I think all of this is already in the python standard library but fuck i know
@@ -7,6 +8,12 @@ import os
 port_path = "port.txt" # Default is 12345.
 with open(port_path, "r") as file:
     PORT = int(file.read())
+PING_PORT = 25565
+
+user_list = [] # Holds the list of online users.
+TIMEOUT = 10    # If a user does not respond after this amount of seconds
+                # they are considered offline.
+last_execution_time = time.time()
 
 def send():
     """
@@ -31,6 +38,47 @@ def send():
     with open(archive_path, 'rb') as file:
         # This should send it like everywhere i think
         client_socket.sendto(file.read(), ('<broadcast>', PORT))
+
+# PINGING 
+def ping(username):
+    client_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    client_socket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
+
+    client_socket.sendto(username.encode('utf-8'), ('<broadcast>', PING_PORT))
+
+def receive_ping():
+    global user_list
+
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    server_socket.bind(('0.0.0.0', PORT))
+
+    while True:
+        data, addr = server_socket.recvfrom(1024)
+        username = data.decode('utf-8')
+
+
+        for user in user_list:
+            if user['username'] == username:
+                user['time_since_ping'] = TIMEOUT
+                return  # Reset time_since_ping and exit the function
+
+        user_list.append({"username": username, "time_since_ping": TIMEOUT})
+
+        current_time = time.time()
+ 
+        if current_time - last_execution_time > 1: # If it's been more than one second
+            last_execution_time = time.time()      # set time to actual time
+
+            # Under here code that needs to run once per second
+            # can be executed.
+            for user in user_list:
+                user['time_since_ping'] -= 1
+
+                if user['time_since_ping'] == 0:
+                    #print(f"{user['username']} is offline.")
+                    user_list.remove(user)
+
+
 
 
 
