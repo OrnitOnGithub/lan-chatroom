@@ -73,3 +73,9 @@ license-text {
     font-family: 'Courier New', Courier, monospace;
     font-size: 1vw;
 }
+
+/* floppa image */
+.floppa {
+    width: 28vw;
+    height: 12vw;
+}

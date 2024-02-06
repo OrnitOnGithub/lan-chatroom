@@ -8,7 +8,9 @@ import os
 port_path = "port.txt" # Default is 12345.
 with open(port_path, "r") as file:
     PORT = int(file.read())
-PING_PORT = 25565
+    if PORT % 2 == 1:
+        PORT = PORT + 1
+PING_PORT = PORT+1
 
 user_list = [] # Holds the list of online users.
 TIMEOUT = 10    # If a user does not respond after this amount of seconds

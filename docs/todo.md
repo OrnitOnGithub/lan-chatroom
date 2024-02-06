@@ -2,8 +2,8 @@
 - [x] Fix message getting reset issue
 - [x] Make GUI
 - [x] Make username.txt more restrictive
-- [ ] Ping to find users
-  - [ ] Display list of users
+- [x] Ping to find users
+  - [x] Display list of users
 - [ ] Improve message synchronisation
 
 ## Pinging

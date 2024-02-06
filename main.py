@@ -37,7 +37,6 @@ def update_user_list():
         user_list = [user['username'] for user in net.user_list] # Just a raw list of all users
         time.sleep(1)
         net.ping(username) # broadcast your username
-        print(user_list)
 
 
 def listen():
@@ -68,7 +67,7 @@ def refresh_text():
 
 @app.route('/refresh_online_users')
 def refresh_online_users():
-    online_users = ' '.join(user_list)
+    online_users = '\n'.join(user_list)
     return online_users
 
 if __name__ == '__main__':
