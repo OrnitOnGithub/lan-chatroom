@@ -17,10 +17,10 @@ body, #wrapper, #div1, #div2, #div3 {
     overflow: auto;
 }
 #div1 {
-    width: 50%;
+    width: 60%;
 }
 #div2, #div3 {
-    width: 24.5%;
+    width: 19.5%;
 }
 
 .chatbox {

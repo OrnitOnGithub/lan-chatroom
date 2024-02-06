@@ -1,172 +1,36 @@
 
-Bird : hello
-StefanCelMare : nice race condition
-Bird : we must eliminate this race condition
-Bird : is is a thread to our society
-StefanCelMare : that was not funny
-Bird : kiys
-StefanCelMare : bro got his joke off of reddit
-Bird : i get off to your mom
-StefanCelMare : how do you send pictures
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :   
-StefanCelMare :   
-StefanCelMare :    
-StefanCelMare :    
-StefanCelMare :    
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :   
-StefanCelMare :   
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :   
-StefanCelMare :   
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :   
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare : m /n
-StefanCelMare : \n 
-StefanCelMare : \n \n 
-StefanCelMare : \n 
-StefanCelMare : \n 
-StefanCelMare : \n 
-StefanCelMare : cls
-StefanCelMare : clear
-StefanCelMare : \n 
-StefanCelMare : while True:
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-StefanCelMare :  
-Bijlengus : hy guys
-Bird :  
-Bird :  
-Bird :  
-Bijlengus : while True :
-Bird :  
-Bijlengus : who tf is free bird
-StefanCelMare : walla
-Bijlengus :  
-StefanCelMare : add new lines to the chatbox
-Bird : bird is the owner (i changed my name not to be recognised)
-StefanCelMare : and instant removal after send
-StefanCelMare : to the hatbox only
-StefanCelMare : right now
-StefanCelMare : hbh
-StefanCelMare : hbh
-StefanCelMare : annoy
-StefanCelMare : annoya
-StefanCelMare : annoyaa
-StefanCelMare : annoyaaad
-StefanCelMare : wdhhd¨$
-Bijlengus : wait ima change too
-Orange : am bacl
-Bird : hello bacl
-Bird : nigga
-Bird : that was not me
-Bird : hello
-StefanCelMare : adada
-Orange : iujfikju
-Orange : u guys still alive ?
-StefanCelMare : d
-StefanCelMare : d
-StefanCelMare : d
-StefanCelMare : animo booletz
-StefanCelMare : ad
-StefanCelMare : a
-StefanCelMare : a
-StefanCelMare : a
-StefanCelMare : a
-StefanCelMare : a
-StefanCelMare : a
-Bird : fuck
-StefanCelMare : stop swearing
-Bird : my bad
-StefanCelMare : a
-StefanCelMare : Soit un bloc de masse, m, sur un plan incliné est accroché comme dans l'image
-StefanCelMare : Déterminer l'équation différentielle de ce block, dans le cas où l'origine est située à la position d'équilibre de la masse sur le plan
-Orange : Mise en Pratique :
-Orange : On considère le pH d'une solution de triéthylamine (meth) de pKa = 9.9 et de concentration 10^-3 mol/L
-Orange : Vérifier que le pH vaut 10,45 avec l'approx et 10,39 avec la résolution complète
-Bird : stratégie de résolution: suicide
-StefanCelMare : schéma
-StefanCelMare : bilan des forces
-StefanCelMare : F=ma
-Bird : based
-Orange : multiplie les deux côtés par 0
-Bird : the best strat
-Bird : asafgasffsg
+Orange : bah jsp yavas le texte du port de base 
+[14:52](Bird) fuck
+Orange : avant
+Orange : how do you print the time ?
+[02:53] YourUsernameHere : helo
+ErdaBerda : print(time)
+[14:53](Bird) I'll commit this
+ErdaBerda : c qui
+[14:53](Bird) dw
+ErdaBerda : c qui yourusername
+Orange : c qui username
+ErdaBerda : identifie toi
+Orange : c hendrick je crois
+[14:53] Bird | cumshot
+ErdaBerda : ou tes boules vont se desintegrer
+[02:53] YourUsernameHere : nuh uh not telling u
+Orange : identifie sinon port change encore
+Orange : c hendrick.
+[02:53] YourUsernameHere : c ivan
+ErdaBerda : ok on port change
+[02:53] YourUsernameHere : bro u guys aren't fun
+[14:53] <Bird> hows this
+ErdaBerda : prove yourself
+Orange : BRUH CHANGE THE NAME
+Orange : c hendrick c hendrick
+[14:54] <Bird> fake news
+[02:53] YourUsernameHere : how tf do I do that
+[14:54] <Bird> fake news
+Orange : username.txt
+[02:53] YourUsernameHere : ahhhhhh
+[02:53] YourUsernameHere : bro this is restarted
+ErdaBerda : you are restarted
+[02:53] YourUsernameHere : wait mr lally is comming
+[14:54] (Bird) among us
+Orange : its hendrick dude

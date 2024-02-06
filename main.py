@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+from datetime import datetime
 import network as net
 import webbrowser
 import threading
@@ -17,8 +18,11 @@ app = Flask(__name__)
 
 
 def sendmsg(msg):
+    now = datetime.now()
+
+    current_time = now.strftime("%H:%M")
     with open(msg_path, "a") as file:
-        file.write("\n" + username + " : " + msg)
+        file.write(f"\n[{current_time}] ({username}) {msg}")
     net.send() # Sync
     net.send() # net.send is unreliable, so run it twice because second time's the charm!
 
