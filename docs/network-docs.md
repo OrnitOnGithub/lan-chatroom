@@ -23,9 +23,7 @@ main.py
 import network as net
 ```
 
-### The library provides three functions.
-
-`set_port(port)` - This function changes the default port (default is 12345). Only computers on the same port will communicate. It takes a 5-digit integer as parameter.
+### The library provides two functions.
 
 `send()` - This function will send all data in the `public` directory to all other computers connected to the same port (if they are listening)
 

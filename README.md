@@ -25,6 +25,10 @@ Install the dependencies
 ```
 pip3 install -r requirements.txt
 ```
+If that doesn't work, try:
+```
+pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org flask --user 
+```
 
 Run `main.py`. Either by running it in VSCode or by running
 ```

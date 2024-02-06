@@ -27,7 +27,7 @@ body, #wrapper, #div1, #div2, #div3 {
     border: 2px solid rgb(64, 147, 165);
 }
 .debug-bordered {
-    border: 2px solid rgb(64, 147, 165);
+    border: 0px solid rgb(64, 147, 165);
 }
 .padded {
     padding-left: 0.5vw;

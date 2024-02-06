@@ -4,16 +4,7 @@ import io
 import os
 # I think all of this is already in the python standard library but fuck i know
 
-PORT = 12345 # Default is 12345. use set_port() to change this.
-
-def set_port(port):
-    """
-    Change the port used to communicate.
-    Default is 12345.
-    """
-    global PORT
-    PORT = port
-
+PORT = 12345 # Default is 12345.
 
 def send():
     """
@@ -57,14 +48,3 @@ def listen():
         with zipfile.ZipFile(folder_zip, 'r') as archive:
             archive.extractall('./public')
 
-        """
-        # Shitty solution, but works idc
-        print("")
-        print("")
-        print(f"Received and extracted folder from {addr}")
-        print("===================")
-        with open(main.msg_path, "r") as file:
-            print(file.read())
-        print("===================")
-        print("Enter a msg: \n")
-        """

@@ -1,26 +1,16 @@
 # High-level TODO
-- [ ] Fix message getting reset issue
+- [x] Fix message getting reset issue
+- [x] Make GUI
+- [ ] Fix message scroll issue (delete previous messages)
 - [ ] Ping to find users
 - [ ] Display list of users
 - [ ] Improve message synchronisation
-- [x] Make GUI
-
-## Message reset issue
-
-### IDEA 1
-
-Just do GUI
-- ~~Pygame (no)~~
-- ~~Tkinter~~
-- Web gooey
-  - **Localhost web app (Flask)**
-  - ~~Built-in web app (doesnt seem to work on school laptops though)~~
 
 ## Pinging
 
 How should we know who's online and who isn't?
 
-### IDEA 1
+### IDEA 1 (frankly, unnecessarily complicated)
 
 Every `X` seconds, everyone broadcasts their username on the port.
 
@@ -43,12 +33,23 @@ EXAMPLE IN JSON
 ]
 ```
 
-### IDEA 2
+### IDEA 2 (most reasonable)
 
-Pings. If someone recieves a ping, they will respond, notifying that someone of their presence.
+Pings. If someone recieves a ping, they will respond, notifying us of their presence.
 
 ## Message Synchronisation
 
 ### IDEA 1
 
 Every message has an associated time to go with it. Then, every user iterates through every other user's message history and takes all messages, arranges them chronologically, removes duplicates and boom! A more accurate message history.
+
+## Message reset issue
+
+### IDEA 1
+
+Just do GUI
+- ~~Pygame (no)~~
+- ~~Tkinter~~
+- Web gooey
+  - **Localhost web app (Flask)**
+  - ~~Built-in web app (doesnt seem to work on school laptops though)~~
