@@ -12,11 +12,17 @@ body, #wrapper, #div1, #div2, #div3 {
     overflow: hidden;
 }
 #div1, #div2, #div3 {
-    width:33%;
     float: left;
     height: 100vh;
     overflow: auto;
 }
+#div1 {
+    width: 50%;
+}
+#div2, #div3 {
+    width: 24.5%;
+}
+
 .chatbox {
     overflow: scroll;
     height: 90vh;
@@ -39,8 +45,8 @@ form {
     font-size: 2.3vw;
 }
 input {
-    height: 2vw;
-    width:13vw;
+    height: 3vw;
+    width:20vw;
     border: 2px solid rgb(64, 147, 165);
     background-color: white;
     font-size: 1vw;

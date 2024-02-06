@@ -29,6 +29,7 @@ If that doesn't work, try:
 ```
 pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org flask --user 
 ```
+If this **STILL** doesn't work, make sure you're using python interpret 3.10+
 
 Run `main.py`. Either by running it in VSCode or by running
 ```
@@ -48,6 +49,8 @@ Now that your browser opened the app, you can start chatting.
 If your browser says "page not found" or anything along those lines, just try reloading the page. This is a pseudo race condition between the browser openning and the web app starting.
 
 To close the app, press `ctrl+c` in your terminal.
+
+If you want to change port, edit `port.txt`. Default is `12345`.
 
 /!\ **WARNING:** You will only recieve and see messages that are sent while the script is running on your computer.
 

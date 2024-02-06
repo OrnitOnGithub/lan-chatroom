@@ -4,7 +4,9 @@ import io
 import os
 # I think all of this is already in the python standard library but fuck i know
 
-PORT = 12345 # Default is 12345.
+port_path = "port.txt" # Default is 12345.
+with open(port_path, "r") as file:
+    PORT = int(file.read())
 
 def send():
     """

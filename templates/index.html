@@ -29,6 +29,38 @@
                 <input type="submit" value="Submit">
             </form>
             <script>
+                // SOLUTION COURTESY OF ERDABERDA, NO IDEA HOW IT WORKS
+
+                document.querySelector('form').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent the default form submission
+    
+                const textInput = document.getElementById('text');
+                const textValue = textInput.value;
+    
+                // Submit the form data via AJAX
+                fetch('/add_text', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        text: textValue
+                    })
+                }).then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                }).then(data => {
+                    // Update the chat box with the new message
+                    document.getElementById('file-content').innerHTML += '<br>' + textValue;
+                    textInput.value = ''; // Clear the input field
+                }).catch(error => {
+                    console.error('There has been a problem with your fetch operation:', error);
+                });
+            });
+            </script>
+            <script>
                 // JavaScript to always scroll to the bottom
                 var scrollBoxContainer = document.getElementById('chatbox-container');
                 scrollBoxContainer.scrollTop = scrollBoxContainer.scrollHeight + 1000;
@@ -46,7 +78,7 @@
                     A current known issue is a race condition between the network
                     library and the flask web app, sometimes resulting in
                     spontaneously clearing the chat. <br>
-                    The networking library is quite a mess and ay cause some problems of its own. <br>
+                    The networking library is quite a mess and may cause some problems of its own. <br>
                     <br>
                     Also, as was mentioned in the README, you cannot see chats from before you joined the chatroom. <br>
                     <br>
