@@ -35,7 +35,7 @@ def update_user_list():
 
     while True:
         user_list = [user['username'] for user in net.user_list] # Just a raw list of all users
-        time.sleep(1)
+        time.sleep(5)
         net.ping(username) # broadcast your username
 
 

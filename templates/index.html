@@ -19,8 +19,7 @@
                             document.getElementById('file-content').innerHTML = data;
                         });
                     }
-                    // Refresh every 5 seconds (adjust as needed)
-                    setInterval(refreshText, 500);
+                    setInterval(refreshText, 1000);
                 </script>
             </div>
             <form method="post" action="{{ url_for('add_text') }}">
@@ -79,8 +78,7 @@
                             document.getElementById('online-users').textContent = data;
                         });
                     }
-                    // Refresh every 5 seconds (adjust as needed)
-                    setInterval(refreshOnlineUsers, 2000);
+                    setInterval(refreshOnlineUsers, 5000);
                 </script>
             </div>
             <h1>Information</h1>
