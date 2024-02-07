@@ -1,6 +1,7 @@
 import os
 
 # Make a backup of your dada
+os.system("mkdir configbackup")
 os.system("cp config/* configbackup/")
 # Fetch updates
 os.system("git reset --hard")
