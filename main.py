@@ -10,7 +10,7 @@ import os
 open_browser = True     # Wether the app will open your browser for you
 browser = "safari"      # Which browser to open.
 msg_path = "public/messages.txt"
-username_path = "username.txt"
+username_path = "config/username.txt"
 with open(username_path, "r") as file:
     first_line = file.readline()
     username = first_line[:20]

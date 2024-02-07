@@ -20,7 +20,7 @@ in your terminal. You can also just click on `Code > Download zip` on GitHub if 
 
 Open the folder you just downloaded or cloned.
 
-Set your username by editing `username.txt`. There is a 20 character limit and only the first line of the file is taken into account.
+Set your username by editing `config/username.txt`. There is a 20 character limit and only the first line of the file is taken into account.
 
 Install the dependencies
 ```
@@ -53,7 +53,7 @@ If your browser says "page not found" or anything along those lines, just try re
 
 To close the app, press `ctrl+c` in your terminal.
 
-If you want to change port, edit `port.txt`. Default is `12345`. <br>
+If you want to change port, edit `config/port.txt`. Default is `12345`. <br>
 This number is always odd, as the following even port is used for other parts of the script (pinging users). If you set the port to an even number, it will be rounded up to the next odd number. <br>
 Also, some ports are reserved for other activity by your computer. The free ports normally are `49152 - 65535`
 
