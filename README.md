@@ -33,8 +33,6 @@ pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-ho
 ```
 If this **STILL** doesn't work, make sure you're using python interpret 3.10+
 
-If somehow it still still doesn't work, you can use the text-based version by running `noflask.py`. However this script is a last resort, it is outdated.
-
 Run `main.py`. Either by running it in VSCode or by running
 ```
 python3 main.py
