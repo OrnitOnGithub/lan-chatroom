@@ -6,6 +6,7 @@ This is a LAN chatroom made by your beloved Ornithopter747. It is made to be use
 - [LAN Chatroom](#lan-chatroom)
   - [Table of contents:](#table-of-contents)
 - [**How to Use**:](#how-to-use)
+  - [Updating](#updating)
   - [Technical Information](#technical-information)
   - [Plans for the Future](#plans-for-the-future)
   - [Want to Contribute?](#want-to-contribute)
@@ -16,7 +17,7 @@ There are no releases yet, so download this repository by running:
 ```
 git clone https://github.com/ornitongithub/lan-chatroom
 ```
-in your terminal. You can also just click on `Code > Download zip` on GitHub if that's easier for you.
+in your terminal. You can also just click on `Code > Download zip` on GitHub if that's easier for you. However I'd recommend using git so that you can run the [update script](#updating)
 
 Open the folder you just downloaded or cloned.
 
@@ -60,6 +61,13 @@ Also, some ports are reserved for other activity by your computer. The free port
 /!\ **WARNING:** You will only recieve and see messages that are sent while the script is running on your computer. (Technically there is nuance to this, but just remember not to trust the message history too much.)
 
 /!\ **WARNING:** Both you and all recipients must be connected to the same network.
+
+## Updating
+
+To update, run the update script:
+```
+python3 update.py
+```
 
 ## Technical Information
 
