@@ -13,6 +13,7 @@ msg_path = "public/messages.txt"
 username_path = "config/username.txt"
 with open(username_path, "r") as file:
     first_line = file.readline()
+    first_line = first_line.replace("\n", "")
     username = first_line[:20]
 app = Flask(__name__)
 
