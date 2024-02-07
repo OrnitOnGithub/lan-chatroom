@@ -8,8 +8,8 @@ import os
 port_path = "port.txt" # Default is 12345.
 with open(port_path, "r") as file:
     PORT = int(file.read())
-    if PORT % 2 == 1:
-        PORT = PORT + 1
+    if PORT % 2 == 0:
+        PORT = PORT + 1 # Force the port to be odd.
 PING_PORT = PORT+1
 
 user_list = [] # Holds the list of online users.

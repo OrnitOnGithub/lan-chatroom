@@ -1,16 +1,17 @@
 # LAN Chatroom
-This is a LAN chatroom made by your beloved Ornithopter747.
+This is a LAN chatroom made by your beloved Ornithopter747. It is made to be used in a completely decentralised way on a single network, allowing peer-to-peer schatting without any (external) servers.
 
-Table of contents:
+## Table of contents:
 
 - [LAN Chatroom](#lan-chatroom)
-  - [**How to Use**:](#how-to-use)
+  - [Table of contents:](#table-of-contents)
+- [**How to Use**:](#how-to-use)
   - [Technical Information](#technical-information)
   - [Plans for the Future](#plans-for-the-future)
   - [Want to Contribute?](#want-to-contribute)
 
 
-## **How to Use**:
+# **How to Use**:
 There are no releases yet, so download this repository by running:
 ```
 git clone https://github.com/ornitongithub/lan-chatroom
@@ -52,9 +53,11 @@ If your browser says "page not found" or anything along those lines, just try re
 
 To close the app, press `ctrl+c` in your terminal.
 
-If you want to change port, edit `port.txt`. Default is `12345`.
+If you want to change port, edit `port.txt`. Default is `12345`. <br>
+This number is always odd, as the following even port is used for other parts of the script (pinging users). If you set the port to an even number, it will be rounded up to the next odd number. <br>
+Also, some ports are reserved for other activity by your computer. The free ports normally are `49152 - 65535`
 
-/!\ **WARNING:** You will only recieve and see messages that are sent while the script is running on your computer.
+/!\ **WARNING:** You will only recieve and see messages that are sent while the script is running on your computer. (Technically there is nuance to this, but just remember not to trust the message history too much.)
 
 /!\ **WARNING:** Both you and all recipients must be connected to the same network.
 
@@ -71,12 +74,18 @@ For extra and more detailed information, check the `docs` directory.
 Features to add, in order:
 
 In alpha:
-- Finish UI
+- Finish UI 
+  - DONE
 - First release
+  - DONE
 
 In beta:
 - Add list of active users
+  - DONE
 - Second release
+  - DONE
+
+We are here now (still in beta)
 
 After release:
 - Improve message synchronisation
