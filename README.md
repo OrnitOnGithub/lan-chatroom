@@ -13,7 +13,7 @@ This is a LAN chatroom made by your beloved Ornithopter747. It is made to be use
 
 
 # **How to Use**:
-There are no releases yet, so download this repository by running:
+Download this repository by running:
 ```
 git clone https://github.com/ornitongithub/lan-chatroom
 ```
@@ -68,6 +68,7 @@ To update, run the update script:
 ```
 python3 update.py
 ```
+This does require to have installed through git IIRC.
 
 ## Technical Information
 
