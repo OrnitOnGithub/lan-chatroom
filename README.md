@@ -41,11 +41,13 @@ python3 main.py
 ```
 in your terminal.
 
-Normally a browser window should open automatically. If it does not, edit these lines in `main.py`:
+Normally a browser window should open automatically. If it does not, or you want to change which browser to open, edit these lines in `main.py`:
 ```python
 open_browser = True     # Wether the app will open your browser for you
-browser = "safari"      # Which browser to open.
+browser = None            # Which browser to open. None for default, "safari" for safari, etc.
 ```
+This will be put in a configuration file later. Sorry for the inconvenience.
+
 If you do not want the app to automatically open the browser for you, you must visit `localhost:5000` by yourself after starting `main.py`
 
 Now that your browser opened the app, you can start chatting.
