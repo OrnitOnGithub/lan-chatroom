@@ -6,4 +6,4 @@ os.system("cp config/* configbackup/")
 os.system("git reset --hard")
 os.system("git pull")
 # Retrieve that backup
-os.system("mv -r configbackup/* config/")
+os.system("mv configbackup/* config/")
