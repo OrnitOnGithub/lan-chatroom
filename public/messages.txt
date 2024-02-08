@@ -1,0 +1,12 @@
+
+/R [08:43] (Floppa) hello
+/O [08:43] (Floppa) whats up
+/Y [08:43] (Floppa) hello
+/G [08:43] (Floppa) whats up
+/B [08:43] (Floppa) hello
+/P [08:43] (Floppa) whats up
+[09:03] (Floppa) hi
+[09:15] (Floppa) hello
+/G [09:17] (Floppa) hi chat
+ [09:21] (Floppa) hello chat
+[09:22] (Floppa) wassup

@@ -11,6 +11,7 @@ open_browser = True     # Wether the app will open your browser for you
 browser = None          # Which browser to open. None for default, "safari" for safari, etc.
 msg_path = "public/messages.txt"
 username_path = "config/username.txt"
+user_colour = ""
 with open(username_path, "r") as file:
     first_line = file.readline()
     first_line = first_line.replace("\n", "")
@@ -24,7 +25,7 @@ def sendmsg(msg):
     now = datetime.now()
     current_time = now.strftime("%H:%M")
     with open(msg_path, "a") as file:
-        file.write(f"\n[{current_time}] ({username}) {msg}")
+        file.write(f"\n{user_colour}[{current_time}] ({username}) {msg}")
     net.send() # Sync
     net.send() # net.send is unreliable, so run it twice because second time's the charm!
 
@@ -64,7 +65,7 @@ def add_text():
 def refresh_text():
     with open(msg_path, 'r') as file:
         file_content = file.read()
-    return render_template('chat.html', file_content=file_content)
+    return file_content
 
 @app.route('/refresh_online_users')
 def refresh_online_users():
