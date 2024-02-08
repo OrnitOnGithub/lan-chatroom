@@ -1,7 +1,7 @@
 {
-    "username" : "YourUsernameHere",
+    "username" : "Ornit",
     "port" : 12345,
-    "colour" : "black",
+    "colour" : "blue",
     "open_browser" : true,
     "browser" : null
 }
