@@ -66,9 +66,9 @@
                     setInterval(refreshText,  1000);
                 </script>
             </div>
-            <form method="post" action="{{ url_for('add_text') }}">
+            <form method="post" action="{{ url_for('add_text') }}" autocomplete="off">
                 <label for="text">Chat</label>
-                <input type="text" id="text" name="text" required>
+                <input type="text" id="text" name="text" required autocomplete="off">
                 <input type="submit" value="Submit">
             </form>
             <script>
