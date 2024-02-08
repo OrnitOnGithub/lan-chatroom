@@ -1,10 +1,9 @@
 import os
 
-# Make a backup of your dada
-os.system("mkdir configbackup")
-os.system("cp config/* configbackup/")
+# Make a backup of your data
+os.system("cp settings.json settingsbackup.json")
 # Fetch updates
 os.system("git reset --hard")
 os.system("git pull")
 # Retrieve that backup
-os.system("mv configbackup/* config/")
+os.system("mv settingsbackup.json settings.json")

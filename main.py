@@ -4,19 +4,48 @@ import network as net
 import webbrowser
 import threading
 import time
+import json
 import sys
 import os
 
+
+msg_path = "public/messages.txt"
+
+"""
 open_browser = True     # Wether the app will open your browser for you
 browser = None          # Which browser to open. None for default, "safari" for safari, etc.
-msg_path = "public/messages.txt"
 username_path = "config/username.txt"
+user_colour = ""
 with open(username_path, "r") as file:
     first_line = file.readline()
     first_line = first_line.replace("\n", "")
     username = first_line[:20]
-app = Flask(__name__)
+"""
 
+# Load the settings from the settings.json file
+with open("settings.json", "r") as settings_file:
+    settings = json.load(settings_file)
+
+    username = settings["username"]
+    open_browser = settings["open_browser"]
+    browser = settings["browser"]
+    colour = settings["colour"]
+    user_colours = {
+        "black" : "",
+        "red" : "/R",
+        "orange" : "/O",
+        "yellow" : "/Y",
+        "green" : "/G",
+        "blue" : "/B",
+        "purple" : "/P"
+    }
+    try:
+        user_colour = user_colours[colour]
+    except:
+        user_colour = ""
+
+
+app = Flask(__name__)
 user_list = []
 
 
@@ -24,7 +53,7 @@ def sendmsg(msg):
     now = datetime.now()
     current_time = now.strftime("%H:%M")
     with open(msg_path, "a") as file:
-        file.write(f"\n[{current_time}] ({username}) {msg}")
+        file.write(f"\n{user_colour}[{current_time}] ({username}) {msg}")
     net.send() # Sync
     net.send() # net.send is unreliable, so run it twice because second time's the charm!
 
@@ -52,8 +81,7 @@ def index():
 
 @app.route('/add_text', methods=['POST'])
 def add_text():
-    text = request.form['text']
-    print(f"Entered Text: {text}")  
+    text = request.form['text'] 
     sendmsg(text)
     time.sleep(1) # Lazy fix to stop race condition
     with open(msg_path, 'r') as file:
@@ -64,7 +92,7 @@ def add_text():
 def refresh_text():
     with open(msg_path, 'r') as file:
         file_content = file.read()
-    return render_template('chat.html', file_content=file_content)
+    return file_content
 
 @app.route('/refresh_online_users')
 def refresh_online_users():

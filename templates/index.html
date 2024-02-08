@@ -10,16 +10,60 @@
     <div id ="wrapper">
         <div class="container debug-bordered" id="div1">
             <div class="chatbox debug-bordered" id="chatbox-container">
-                <pre id="file-content">{{ file_content }}</pre>
+                <pre id="file-content"></pre>
                 <script>
                     function refreshText() {
                         fetch('/refresh_text')
                         .then(response => response.text())
                         .then(data => {
-                            document.getElementById('file-content').innerHTML = data;
+                            // Split the received data into lines
+                            const lines = data.split('\n');
+                            // Get the container where the text will be displayed
+                            const contentElement = document.getElementById('file-content');
+                            // Clear the current content
+                            contentElement.innerHTML = '';
+                            // Process each line
+                            lines.forEach(line => {
+                                // Check for the prefix and set the color accordingly
+                                let color = 'black';
+                                if (line.startsWith('/R')) {
+                                    color = 'red';
+                                    line = line.slice(2); // Remove the '/G' prefix
+                                } else if (line.startsWith('/O')) {
+                                    color = 'orange';
+                                    line = line.slice(2); // Remove the '/R' prefix
+                                } else if (line.startsWith('/Y')) {
+                                    color = 'yellow';
+                                    line = line.slice(2); // Remove the '/R' prefix
+                                } else if (line.startsWith('/G')) {
+                                    color = 'green';
+                                    line = line.slice(2); // Remove the '/R' prefix
+                                } else if (line.startsWith('/B')) {
+                                    color = 'blue';
+                                    line = line.slice(2); // Remove the '/R' prefix
+                                } else if (line.startsWith('/P')) {
+                                    color = 'purple';
+                                    line = line.slice(2); // Remove the '/R' prefix
+                                }
+                                // Create a span element for the line with the chosen color
+                                const span = document.createElement('span');
+                                span.style.color = color;
+                                span.textContent = line;
+                                // Append the span to the container
+                                contentElement.appendChild(span);
+                                // Add a newline character after each line except the last
+                                if (line !== lines[lines.length -  1]) {
+                                    contentElement.appendChild(document.createTextNode('\n'));
+                                }
+                            });
                         });
+
+                        // Scroll to the bottom
+                        var scrollBoxContainer = document.getElementById('chatbox-container');
+                        scrollBoxContainer.scrollTop = scrollBoxContainer.scrollHeight;
                     }
-                    setInterval(refreshText, 1000);
+
+                    setInterval(refreshText,  1000);
                 </script>
             </div>
             <form method="post" action="{{ url_for('add_text') }}">
@@ -51,18 +95,10 @@
                         throw new Error('Network response was not ok');
                     }
                     return response.text();
-                }).then(data => {
-                    // Update the chat box with the new message
-                    document.getElementById('file-content').innerHTML += '<br>' + textValue;
                 }).catch(error => {
                     console.error('There has been a problem with your fetch operation:', error);
                 });
             });
-            </script>
-            <script>
-                // JavaScript to always scroll to the bottom
-                var scrollBoxContainer = document.getElementById('chatbox-container');
-                scrollBoxContainer.scrollTop = scrollBoxContainer.scrollHeight + 1000;
             </script>
         </div>
 
