@@ -11,17 +11,6 @@ import os
 
 msg_path = "public/messages.txt"
 
-"""
-open_browser = True     # Wether the app will open your browser for you
-browser = None          # Which browser to open. None for default, "safari" for safari, etc.
-username_path = "config/username.txt"
-user_colour = ""
-with open(username_path, "r") as file:
-    first_line = file.readline()
-    first_line = first_line.replace("\n", "")
-    username = first_line[:20]
-"""
-
 # Load the settings from the settings.json file
 with open("settings.json", "r") as settings_file:
     settings = json.load(settings_file)
@@ -99,11 +88,11 @@ def refresh_online_users():
     online_users = '\n'.join(user_list)
     return online_users
 
+
 if __name__ == '__main__':
     try:
         listen_thread = threading.Thread(target=listen)
         listen_thread.start()
-
         ping_thread = threading.Thread(target=update_user_list)
         ping_thread.start()
 

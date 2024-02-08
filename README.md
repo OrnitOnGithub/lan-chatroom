@@ -23,22 +23,21 @@ The setting up is a bit long. Sorry for the inconvenience, but I do recommend re
 
 ## Download and Dependencies
 Download this repository by running:
-```
+```bash
 git clone https://github.com/ornitongithub/lan-chatroom
 ```
 in your terminal.
 
-Open the folder you just downloaded/loned.
+Open the folder you just downloaded.
 
-Install the dependencies
-```
-pip3 install -r requirements.txt
+Install Flask
+```bash
+pip3 install flask
 ```
 If that doesn't work, try:
-```
+```bash
 pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org flask --user 
 ```
-If this **STILL** doesn't work, make sure you're using python interpret 3.10+
 
 ## Configuration
 
@@ -47,36 +46,41 @@ There is a configuration file called `settings.json` that looks like this:
 {
     "username" : "YourUsernameHere",
     "port" : 12345,
+    "colour" : "black",
     "open_browser" : true,
-    "browser" : null,
-    "colour" : "black"
+    "browser" : null
 }
 ```
-This is where you can change different settings. To edit them, simpyl edit the field after the `:` like this:
+This is where you can change different settings. To edit them, simply edit the field after the `:` like this:
 ```json
     "username" : "MyNewUsername",
-    [...]
+    [...]             |
+                      |
+This was changed. <---'
 ```
 
 ### Necessary config
 
 `username` is obviously your username, what will be displayed to others using the chat.
 
-`port` is the port you're chatting on. Think of this as a room. You only send and recieve messages from a certain port. Either use the default port `12345` or agree on a new port with your friends. (This number is always odd, as the following even port is used for other parts of the script (pinging users). If you set the port to an even number, it will be rounded up to the next odd number). <br>
-Also, some ports are reserved for other activity by your computer. The free ports generally are `49152 - 65535`
+`port` is the port you're chatting on. Think of this as a room. You only send and recieve messages from a certain port. Either use the default port `12345` or agree on a new port with your friends.
 
 `colour` is the colour your messages will appear in chat. Possible colours are:
-- red
-- orange
-- yellow
-- green
-- blue
-- purple
-- black
+- <span style="color:red">red</span>
+- <span style="color:orange">orange</span>
+- <span style="color:gold">gold</span>
+- <span style="color:green">green</span>
+- <span style="color:blue">blue</span>
+- <span style="color:purple">purple</span>
+- <span style="color:black">black</span>
 
 ### Extra config
 
+(and other info)
+
 Skip this part if you're not running into errors.
+
+**Browsers**
 
 `open_browser` dictates wether the program will automatically open the browser for you (this is a web app). If you set it to false, you'll have to start your browser and visit `localhost:5000` yourself.
 
@@ -88,15 +92,21 @@ Skip this part if you're not running into errors.
     "browser" : "safari",
 ```
 
+**Ports**
+
+By the way, the port number is always odd, as the following even port is used for other parts of the script (pinging users. If you set the port to an even number, it will be rounded up to the next odd number). <br>
+If you were to use an even port, the program would just round it up to the next odd port. <br>
+Also, some ports are reserved for other activity by your computer. The free ports generally are `49152 - 65535`
+
 ## Run it
 
 Run `main.py`. Either by running it in VSCode or by running
-```
+```bash
 python3 main.py
 ```
-in your terminal.
+in your terminal. Make sure you're using python interpret 3.10+
 
-Normally a browser window should open automatically. If it does not, ckeck [Extra config](#extra-config)
+Normally a browser window should open automatically. If it does not, ckeck [Extra config](#extra-config).
 
 Now that your browser opened the app, you can start chatting.
 
@@ -104,13 +114,19 @@ If your browser says "page not found" or anything along those lines, just try re
 
 To close the app, press `ctrl+c` in your terminal.
 
-/!\ **WARNING:** You will only recieve and see messages that are sent while the script is running on your computer. (Technically there is nuance to this, but just remember not to trust the message history too much.)
+/!\ **WARNING:** Messages synchronise pretty weirdly, so whenever joining a room, or whenever someone joins a room, don't really trust the message history.
 
 ## Updating
 
-To update, run the update script:
-```
+You can run the update script:
+```bash
 python3 update.py
+```
+This script just does the same thing as a manual update, but saves your config file.
+
+However this relies on the fact that there won't be a major update that changes the configuration file. If you want to update manually, run:
+```bash
+git reset --hard && git pull
 ```
 
 ## Technical Information
