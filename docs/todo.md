@@ -4,6 +4,8 @@
 - [x] Make username.txt more restrictive
 - [x] Ping to find users
   - [x] Display list of users
+- [x] Colour
+- [ ] Encryption
 - [ ] Improve message synchronisation
 
 ## Pinging
