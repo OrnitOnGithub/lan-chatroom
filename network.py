@@ -1,13 +1,15 @@
 import zipfile
 import socket
+import json
 import time
 import io
 import os
 # I think all of this is already in the python standard library but fuck i know
 
-port_path = "config/port.txt" # Default is 12345.
-with open(port_path, "r") as file:
-    PORT = int(file.read())
+with open("settings.json", "r") as settings_file:
+    settings = json.load(settings_file)
+
+    PORT = settings["port"]
     if PORT % 2 == 0:
         PORT = PORT + 1 # Force the port to be odd.
 PING_PORT = PORT+1
