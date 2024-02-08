@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, make_response
+from flask import Flask, render_template, request
 from datetime import datetime
 import network as net
 import webbrowser
@@ -8,7 +8,7 @@ import sys
 import os
 
 open_browser = True     # Wether the app will open your browser for you
-browser = None            # Which browser to open. None for default, "safari" for safari, etc.
+browser = None          # Which browser to open. None for default, "safari" for safari, etc.
 msg_path = "public/messages.txt"
 username_path = "config/username.txt"
 with open(username_path, "r") as file:
