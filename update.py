@@ -1,5 +1,7 @@
 import os
 
+# Yes I know this is dumb.
+
 # Make a backup of your data
 os.system("cp settings.json settingsbackup.json")
 # Fetch updates
