@@ -1,6 +1,6 @@
 {
     "username" : "YourUsernameHere",
-    "port" : 12345,
+    "port" : 12347,
     "colour" : "black",
     "open_browser" : true,
     "browser" : null

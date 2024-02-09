@@ -1,4 +1,6 @@
-# This project
+# this project (all contents of github.com/ornitongithub/lan-chatroom that are not part of any of the other licenses)
+
+MIT License
 
 Copyright (c) 2024 Ornithopter747
 
@@ -20,21 +22,47 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-# network.py
 
-NOTE: This license is for a newer version of network.py. andrei73457 was not a contributor yet and "data_handler.py" did not exist.
+# enyo (enyoencryption.py)
 
-Copyright (c) 2024 OrnitOnGithub, andrei73457
+MIT License
+
+Copyright (c) 2020 Apratim Shukla
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
-of the contents of the "network.py" and "data_handler.py" files and associated documentation files (the "Software"), to deal
+of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 copies of the Software, and to permit persons to whom the Software is
 furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the "network.py" and "data_handler.py" files.
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+# network.py
+
+NOTE: This project originally used an older version of network.py, and after that it was fundamentally changed beyond recognition. The license is being kept here just in case.
+
+Copyright (c) 2024 OrnitOnGithub, andrei73457, ErdaBerda
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of the contents of the "network.py" file and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the "network.py" file.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
