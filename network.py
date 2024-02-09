@@ -1,11 +1,8 @@
-import zipfile
+from enyoencryption import encrypt, decrypt
+from datetime import datetime
 import socket
 import json
 import time
-from datetime import datetime
-import main # the main script so I can set some variables only there
-import io
-import os
 
 messages = ""
 
@@ -13,16 +10,45 @@ test_phrase = "The quick brown fox jumps over the lazy dog"
 
 with open("settings.json", "r") as settings_file:
     settings = json.load(settings_file)
+    username = settings["username"]
+    open_browser = settings["open_browser"]
+    browser = settings["browser"]
     colour = settings["colour"]
+    colourlist = {
+        "black" : "/D",
+        "red" : "/R",
+        "orange" : "/O",
+        "yellow" : "/Y",
+        "green" : "/G",
+        "blue" : "/B",
+        "purple" : "/P"
+    }
+    try:
+        user_colour = colourlist[colour]
+    except:
+        user_colour = "/D" # default (black)
     PORT = settings["port"]
     if PORT % 2 == 0:
         PORT = PORT + 1 # Force the port to be odd.
+
+with open("key.txt") as file:
+    key = file.read()
+
 PING_PORT = PORT+1
 
 user_list = []  # Holds the list of online users.
 TIMEOUT = 5     # If a user does not respond after this amount of seconds
                 # they are considered offline.
 last_execution_time = time.time()
+
+
+def username_is_valid(username) -> bool:
+    if (len(username) < 3) or (len(username) > 20):
+        return False
+    if "\n" in username:
+        return False
+    # Otherwise,
+    return True
 
 
 # PINGING 
@@ -41,11 +67,13 @@ def receive_ping():
     while True:
         data, addr = server_socket.recvfrom(1024)
         username = data.decode('utf-8')
+        if not username_is_valid(username): # If username is invalid
+            username = "Illegal Username"
         user_ip = addr[0]  # Extract the IP address from the 'addr' tuple
 
         user_found = False
         for user in user_list:
-            if user['username'] == username:
+            if user['ip'] == user_ip:
                 user['time_since_ping'] = TIMEOUT
                 user_found = True
                 break
@@ -67,9 +95,10 @@ def receive_ping():
 
 
 def send(message):
-    global colour
+    global key
+    global user_colour
     global test_phrase, user_list  # Assuming 'test_phrase' and 'user_list' are defined globally
-    username = main.username  # Fetch username from main script
+    global username
     # Iterate over all users in the user_list and send the message to each one
     for user in user_list:
         ip = user["ip"]
@@ -78,10 +107,10 @@ def send(message):
             client_socket.connect((ip, PORT))
             packet = {
                 "username": username,
-                "message": message,
-                "colour": colour,
+                "message": encrypt(message, key),
+                "colour": user_colour,
                 "time": datetime.now().strftime("%H:%M"),
-                "test phrase": test_phrase
+                "test_phrase": encrypt(test_phrase, key)
             }
             packet_json = json.dumps(packet)
             client_socket.sendall(packet_json.encode())
@@ -95,6 +124,8 @@ def send(message):
 
 def listen():
     global messages
+    global test_phrase
+    global key
     """
     listen() must run constantly on a separate
     thread, as it needs to listen all the time
@@ -114,6 +145,38 @@ def listen():
             # Now we need to handle the data recieved
             data = data.decode('utf-8')
             data = json.loads(data)
-            messages += f"\n{data['colour']}[{data['time']}] ({data['username']}) {data['message']}"
-            print(messages)
+
+            # Now we must check for the validity of the message before letting it through
+            # We need to check for validity of:
+            # - username
+            #   - between 3-20 characters, no newlines
+            # - colour
+            # - encryption test phrase
+            valid = True
+
+            username = data['username']
+            colour = data['colour']
+            time = data['time']
+            message_content = decrypt(data['message'], key)
+            recieved_test_phrase = decrypt(data['test_phrase'], key)
+
+            # If the username is invalid, censor it.
+            if not username_is_valid(username):
+                username = "Illegal Username"
+
+            # If any of the fields are empty, message is invalid
+            for x in data:
+                if not data[x]:
+                    valid = False
+
+            # Decrypt test phrase here
+            # todo.
+
+            # Check for the test phrase.
+            if recieved_test_phrase != test_phrase:
+                valid = False
+
+            # Finally, add the approved message to the messages variable.
+            if valid:
+                messages += f"\n{colour}[{time}] ({username}) {message_content}"
         conn.close()  # Close the connection after processing the message

@@ -15,20 +15,7 @@ with open("settings.json", "r") as settings_file:
     username = settings["username"]
     open_browser = settings["open_browser"]
     browser = settings["browser"]
-    colour = settings["colour"]
-    user_colours = {
-        "black" : "",
-        "red" : "/R",
-        "orange" : "/O",
-        "yellow" : "/Y",
-        "green" : "/G",
-        "blue" : "/B",
-        "purple" : "/P"
-    }
-    try:
-        user_colour = user_colours[colour]
-    except:
-        user_colour = ""
+
 
 
 app = Flask(__name__)

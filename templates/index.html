@@ -22,11 +22,13 @@
                             const contentElement = document.getElementById('file-content');
                             // Clear the current content
                             contentElement.innerHTML = '';
-                            // Process each line
                             lines.forEach(line => {
                                 // Check for the prefix and set the color accordingly
-                                let color = 'black';
-                                if (line.startsWith('/R')) {
+                                let color = 'black'
+                                if (line.startsWith('/D')) {
+                                    color = 'black';
+                                    line = line.slice(2);
+                                } if (line.startsWith('/R')) {
                                     color = 'red';
                                     line = line.slice(2);
                                 } else if (line.startsWith('/O')) {

@@ -1,16 +1,7 @@
-from enyoencryption import EnyoEncryption
-# Third parameter is an optional integer for partition (by default 2), the fourth parameter is optional Boolean for transposition (default False)
-test = EnyoEncryption("test", "secretkey", partition=2, transposition=True)
+from enyoencryption import encrypt, decrypt
 
-# To print the encrypted text
-print(test.encrypted)
+test = encrypt("test", "secretkey")
+print(test)
 
-
-
-
-from enyoencryption import EnyoDecryption
-# Third parameter is an optional integer for partition (by default 2), the fourth parameter is optional Boolean for transposition (default False)
-test = EnyoDecryption("SaSQpN", "secretkey", partition=2, transposition=True)
-
-# To print the decrypted text
-print(test.decrypted)
+test = decrypt("SaSQpN", "secretkey")
+print(test)
