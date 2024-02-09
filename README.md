@@ -150,8 +150,6 @@ If your browser says "page not found" or anything along those lines, just try re
 
 To close the app, press `ctrl+c` in your terminal.
 
-/!\ **WARNING:** Messages synchronise pretty weirdly, so whenever joining a room, or whenever someone joins a room, don't really trust the message history.
-
 ## Updating
 
 You can run the update script:
