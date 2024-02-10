@@ -179,7 +179,7 @@ def listen():
     server_socket.bind(('0.0.0.0', PORT))  # Bind to all available network interfaces
     server_socket.listen()  # Start listening for incoming connections
     while True:
-        conn = server_socket.accept()  # Accept a new connection
+        conn, _ = server_socket.accept()  # Accept a new connection
         while True:
             data = conn.recv(2048)  # Receive up to 2048 bytes of data. That's a lot of data!
             if not data:
