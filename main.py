@@ -8,7 +8,7 @@ import json
 import sys
 import os
 
-# Load the settings from the settings.json file
+# Load settings from settings.json file.
 with open("settings.json", "r") as settings_file:
     settings = json.load(settings_file)
 
@@ -25,9 +25,12 @@ user_list = []
 def sendmsg(msg):
     net.send(msg)
 
+def listen():
+    net.listen()
+
 def update_user_list():
     global user_list
-    # Start the receive_ping function in a separate thread
+    # Start the receive_ping function in a separate thread.
     ping_thread = threading.Thread(target=net.receive_ping)
     ping_thread.start()
 
@@ -36,9 +39,6 @@ def update_user_list():
         time.sleep(1)
         net.ping(username) # broadcast your username
 
-
-def listen():
-    net.listen()
 
 
 @app.route('/')
@@ -54,7 +54,7 @@ def add_text():
 @app.route('/refresh_text')
 def refresh_text():
     return net.messages
-
+# Maybe in the future refresh_text and refresh_online_users can be put together.
 @app.route('/refresh_online_users')
 def refresh_online_users():
     online_users = '\n'.join(user_list)

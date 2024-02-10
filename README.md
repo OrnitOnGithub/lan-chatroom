@@ -185,6 +185,7 @@ Make sure you respect the `LICENSE` please. Thank you.
 - The app is generally more usable
 - This new version is ***not*** compatible with earlier versions. Beware.
 - Read [Encryption](#encryption) for info about how encryption works.
+- Now comes with a free jpeg of floppa!
 
 ### Technical Stuff
 

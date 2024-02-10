@@ -16,7 +16,7 @@
                         fetch('/refresh_text')
                         .then(response => response.text())
                         .then(data => {
-                            // Split the received data into lines
+                            // Split into lines
                             const lines = data.split('\n');
                             // Get the container where the text will be displayed
                             const contentElement = document.getElementById('file-content');
@@ -68,13 +68,15 @@
                     setInterval(refreshText,  1000);
                 </script>
             </div>
-            <form method="post" action="{{ url_for('add_text') }}" autocomplete="off">
-                <label for="text">Chat</label>
-                <input type="text" id="text" name="text" required autocomplete="off">
-                <input type="submit" value="Submit">
+            <form method="post" action="{{ url_for('add_text') }}" autocomplete="off" class="padded">
+                <input type="text" id="text" name="text" class="padded textbox" required autocomplete="off">
+                <input type="submit" value="SEND" class="submit">
             </form>
             <script>
-                // SOLUTION COURTESY OF ERDABERDA/ChatGPT, NO IDEA HOW IT WORKS
+                // SOLUTION COURTESY OF ERDABERDA/ChatGPT
+                // Stops default annoying behaviour of the form. Stops reloading the page, and
+                // keeps the textbox active so you don't have to click on it again every message
+                // you need to send.
 
                 document.querySelector('form').addEventListener('submit', function(event) {
                 event.preventDefault(); // Prevent the default form submission
@@ -124,22 +126,19 @@
                 <main-text>
                     Hello and welcome to the chatroom. Are you on the latest version? Make sure.<br>
                     <br>
-                    We are currently in beta so
-                    you might encounter a few issues using this chatroom. <br>
-                    A current known issue is a race condition between the network
-                    library and the flask web app, sometimes resulting in
-                    spontaneously clearing the chat. <br>
-                    The networking library is quite a mess and may cause some problems of its own. <br>
-                    <br>
-                    If you want to report issues, first of all check the todo list
-                    to make sure this isn't already planned or that such issue was
-                    not already reported, and then please do so
-                    <a href="https://github.com/OrnitOnGithub/lan-chatroom/issues">here</a>. <br>
+                    We made it out of beta! We're in the full release and the chats now feature encryption! <br>
+                    If you're not recieving someone's messages, or vice versa, make sure you're both using
+                    the same encryption key and port. <br>
                     <br>
                     Any extra information can be found in the README file. If you're having trouble,
                     give it a read. <br>
                     <br>
-                    Thank you. Remember everything you say here is public, unencrypted and can be tracked.
+                    If you want to report issues, check the todo list
+                    to make sure this isn't already planned or that such issue was
+                    not already reported, and then please do so
+                    <a href="https://github.com/OrnitOnGithub/lan-chatroom/issues">here</a>. <br>
+                    <br>
+                    Thank you. Keep in mind you're in a public chatroom.
                 </main-text>
             </div>
             <h1>Legal & Licenses</h1>
@@ -218,13 +217,11 @@
                     AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
                     LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
                     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-                    SOFTWARE.
+                    SOFTWARE. <br>
                 </license-text>
             </div>
-            <img
-            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBYWFRgSFhUVGRgYGBgVGhgYGBgYGBgVGBgZGRgYGBgcIS4lHB4rHxgYJjgmKy8xNTU1GiQ7QDs0Py40NTEBDAwMEA8QGhISGDEhGh0xMTE0MTQ0NDQ0NDQ0NDQ0NDQxMTE0NDQxPz80PzQxPzQ0PzE/MTExMTExMTQ0MTExMf/AABEIAM4A9QMBIgACEQEDEQH/xAAbAAABBQEBAAAAAAAAAAAAAAAEAQIDBQYAB//EADQQAAEDAwMCBQIDCQEBAAAAAAEAAhEDBCEFEjFBUQYTImFxgZEyscEHFBUjQlKh0fDxYv/EABgBAAMBAQAAAAAAAAAAAAAAAAECAwAE/8QAIhEBAQEBAQEAAwABBQAAAAAAAAECERIhAzFBEwQUIjJR/9oADAMBAAIRAxEAPwDFSlldtXELkdTiUkroSLMcSoyuTS5YLUjSuJUYqJHVfZbjdSyulQ+anB6FaVIlDlEHpwciPUu5LKhLwuNQJW6e8oaU59RQF6PA6l3LtyjlOFJx6I8bpHPSb1Oy0PUqdlsAswJrCeFMy0PVHMYnQsyBlsOyIDAOicxhPRSi2csPEMLoRjLTuUQyiBwEOjIrmUieiIp2pKLeIE8J2i1A9+36I5nS6vDqdr7J3kxwra52tO1CFo5Cfzws10FtK5E4XJT9Zlwb7pvljuUA25cclSNuR3T38fE5sX5Q7rjRH9wUDaspXFDyb1Ke6j7hQvoFKT7pjnnul4JPKPZNLD2S7z3XeYe6zGhnslhOFUrvN+EOFMCWVIH+wKe1k/0rcMGJXQjm2zeynZRb0C3GVZoOPRSMte6sS1RuWDiJtEBPa1S06RKKZaodHgJoUjaJKsKduB0UwYh03ALLTuiGWwCJDU4NW6PlE1g7J+xSBc6EP2JgC4kDlR1blrRyFUVLp9R21gJ/RNnNoa1xJql9P8tnJwrzwzYGmzzHDPIUeheHd7g52epK1eoW4YzaCqW+Yl/2rK3NUlxPcpjK54UpZKFewg4W9dHwLD0iiaVyHYfjI0qe4CcIpmnh3COdbJlm/a7aV01y8dT0l3KR1k8YjC0NkZVk2zaRwCksGMSbMHu0+/CY/TX9II7hbG50WQYVHWtX0z+o6Jbk00o3Wrhg8pptXLQU7lrsODT79Ur9ODvwPn2KThvTOGk6YhSstu6OrUHMMOaQfdK1koU0+h2UgpQyEQy37ollIIGBMpGeERStnSjWMRNGnkJejwIzTxGVXXVGHQtO9mVV6jZPndsdHwt0eK2mFM15SCg4ctI+icykSYAyiCdlRTMdKY2wqRIY5T0LN/Vjh9EhjQFzngckBSXFCoGktY8n4VDVbUcfW1wPRsJs59UutcH1tQaOEH++OedoUlp4fuKgLmsho6uwtBp2k07du97g98fQewXR4zlC7tZ6lpFR5lwLW93f6Wi0XSASGgCOsdVLbsq1TxDVqbG18toMIWwJ2pG2zKVMx0Cyt/fl59lZa5fuPoBx1WfhQ1pf8eTUhYpAEu1T6qh8tcp1yP0OKUBV98Nrg77owuTardwIPVdnXJ5HaXVnqtFaXDe8rD2DixxY7Haeqvbe62pmkaxjpQ17Qa4bYCrqOpjqUYy7YeChYHGfvtH6tEKtNSowwRP0/VbchrlXahp7XDBS+RV9nqFOoAx8HpnkfVJfeG3j+ZSeXD+3qP8AaotRsyyYGRkd1JZaxVYBD3YS3LTQ91pVYBvpvBPtykpB5O3bB6k9FC7WLioPU8hv2lJSqOIiTCW5VzVyy1/+hPVWFKkxkOLpPZUzKu0QT91BcX5AwUsyfrT1blpjAB+6tbSlLZ5leUs1k7/U4wt/4U1cVGlpPwmueF9LW8tQ4QWj5hZzVbM0z5jMgcjqtNe3jRhVr6jX8EcZCnRoHSdQ3YJE9lprKuHGDCxFe3NKpuacOMR2V9o9RxOT8JdDGluLeG72CSMwqR91TeSHhrXTzAlW9rckGCsl46tfL/ntPJ490ZSag26YeGuMH3Q1tp5e8A8dVBpFUvoh5dnsOnyrTT9QDHQQEPd60zONFZWjWCFW6zf7PQFc29VjxLSPusfrjwahgyq2/Azn6ArVC45URCcQuULXRP0QBLC5OCXlE2FyeuW+szZKRrSeAnl47JpqHou2uX7UV9alzZBhw4QdreOB2O5CsmWz3ZSXml7hu/qHUcozUDzXbpyibC3e5wDce/RVdtcFp8t4g9D0Ktqd05uP6fbqngNHa0tohx3H24UzmTwFVW+q8CJ6K5bcGBjlNwlUep2c5VRWtQG5Ala64aIMlZ/yt7p6BT18PnKstrVxyUS8hoR1d4AVU5smVL9qcD1Xbj1UltTznPsjKFm5wBM/ZG0rRrPUWl3XAwPkoz4Ch1rRDt8xgPfaUL4Y1JzKgaQRJ+y1t3q9LbsJYMRkgEIfw9Z0HvLSWl0yM9037L3lXNeoXsEcoNjXA46crVDTWhvpVfXtYwRBSayeXqseBHBMqWwO1wI4lPLOAony0iPlQ0pGvt6YeAYhC+J/D4r0SCT6chEaNU3NBn5Vpq8/u9Tb+LYY+YT4z1PeuPO9PuG02+WdoDcIgXlE9W/cLyG7rPe873umTiSIyrfw1UoMJdUc97+Gsn0D3J6qv+BP/Jx6my7YAC10Y5Ex9YVTcOJcSczme6pPB9iX3bmCXMgOILjAJlbWppdMOLGsgzjJ5Ut58q411RgHslFI9lcfuu0wRwnimpd66OKttoSpmWSsAxOAW6wIWYXI5ct1mLZZDqphbjspy1cqXaUhoZC4hStauIS+qKvutOFQtjkFS6pQDQA3gCD7lG27w125A61cgZj0910/j38R3lWUa+10hayxvGlgk5WEdeNJ5Ctra49Mgq1qcnauru73nYBgcpNoiAEPa4aXHJKifUJPVQ3pfMLd0ZE/qqatduZ/QY7gK5I75RtjqFNvpexrh8SlzW1GZOsucAGl2OgwSqfVtYqg7AXNn3K9AvPC9rXPmUHik/nGBPuFlNe8JXTfV5YqDo5mZ+itnlQvWO8ovMudz1KW2un03yx5kHkdURX0ys3Dqbx8gplGhtnc3Puq8hPr13wN4p89nlVPxtxP9wWlu2T0Xh9pfeU5r2OLXSMhetaLrzalMbiJj7pNz4fFLVpoesw4MI+4eJwhnPxhceo6YM0q4LSMf+LU79zDGZafyWPtqTXEF4IcOCJAV/ZVIEbpCONeU9568Z8Q6OwvqOa7Y4OJ2xg/6QWkeE7msQ5jQ1v95OAtf470wip5zJg/iA6hHeFdR2UtrXc8grov5fiXn6sdE0+np1I7n76r+vMmEttUe5+9xmTKbXtg/wBcySn0GELi/Jv1V8Z4srpmA7uhyUY5hLBKDW58XzeuXJ0ppKFMUBIllIszNpC1PhOhMkYEikSOCzGQobiiHtLT1RLGSiBaps3gXPXluqsNOqWdAf8ACvtGeHD2MIrxL4fc9/mNEiMpdBsizBBHXK6+9y55Oa4vHPa1sD4QR5klJXfmAntpOgGFGxUS1khMdT+E63eG8rq9TkwcpeD1A0+8fCLt7p7RAe6B7qpdUEkkn7JW3Xafko/SWLb+IOJ9YaR8Km1ujTqmdoB4xhTvupiUHVqduE+dF8xlr+x2FWelaiabQD0Ul7T3FVl3aPjAKr66TnG90/Vg9sz/AOI+jeCZBXmVhfPZ6TKvqF24iQUs/F03vj0Fl5LYHKSyvnboKw9levD4LyrZjXfi3mflJr8Te1n4rc40i5pyOyzWiVSW7hyOR3WzsPKfTdTqRBESTwgdAsGU3vpGCJlpGQWzzKTWbI0vajtrsHp/ngq90x4cQBEIW80CCXM6qPSQ9j9pbkLm52r9+NXRYCY6Kuv7bY7HBVlTkDPVOu2bmcdFW8kbN+qAlIuLeiWFJeOlIlASIiz64rkhKfiDlxUFxVgYKCN0ZyUZkfS9t2wFKagCpjqDQOU06i33W8tNSNPpdMPcZ4AQur27GA7RCl8MXbXh4BzAQusOJkK8vIlZ96oabJdH/SrRtv0yEy3pgQIySFcOpiEl0fjP3FBw6fVIKnf/ACrerTnCEraeCMFb0HFFeHaZHBQD7vMSrita8tIQL9GJkwmhKDfdQP0SUyXZ4RP8NDeVPQtluAit7aTkK7ZpLS2VXi4awwSrC21hhGycotGY8QaWWGWifgKlZqRZILTIXqVtRa85H3TrvwfQrDLQD3AV8ahNZeT0NVfvEjBP1WoF/taHdMIvWvBJojzGN3BuTHKzNzdgsLADz+SOk2qNrUqta1hMPMzmAvQtC0PYxu8y4DssB+z/AFB73ikRLBnPT6r1+ngKes9hpVZcv2AgqDS3sqOLxH0VlfvaG+oBA6bsBlgABnAXHc80tL8F1uU5hkQoK74Kmtylt+qT9KO4ZDiPdNRGoth6FJSqz9HSuTFyJmZqF3RDV908qwcYUL6eZ6K3EOq+qDgIa4p8+8KyrskymPpAfZNCWhWUBGVC+ntOOEfXEAQhbrgI9gdq+8HH8eOnKk1EEEiV3hMelxCLvLXrK2qeQNpDREu6dUXVqAnCgpUiISucSfhTtNxM33hKKSgYMoxjHdAtPoVA7Tw48I210wdeFLS90fQGOV0Yz1DWlHeaE3JWC1q+NJxpN6dV69UAXlf7QLTy6/mADa9oz7hVmIT1Wft6NR78mAtDYWFKkfMecrNW167nj3RLC959T4CXWeDnTd2Wq0z+Eq9tLsESvNKF7TomAS5x7KytddcZDWnClOw+tdejtumnBIhef/tC8OU2NN1RgA/jaOJPVQi+qvIAkZ6FO169igaMl7nRgGYVZpKj/BdFtGl5nVwkrXWmvteY4hec6HrOxgpVGFvTd0Wmt7dhG4A/IKnu0Y0lzqLHel2RH5pNKtGD1NJhUgYwuDYdLuM4WqtqIYwMbhQ/qsRVWme4UzBhI890rVKz/kr/ABW6q31AhBtV5XYHDOVTV6W0wtYpnX8KuTJXJTqV7JCgePT7p5qQfohQ/MLqc5rDhNeew+UhwY909wiUYShd0ghQVDJhTEwEHcVYErcBqPCh9L/lW9y/2Wf8IVCQ75Wme0EJdKZqn3mcYynVojlS3FMA8KJhnopKUMyoZxKtrK6MQUMzYPlEB0xEfCfMT1RrnwJ7p1O6yhX0y7nASwAurF459ftZOeTklU+qWjLhppVGSOh7e4RNOt3ypg6VWaJx5JrnhmpbuJaS5k4I5HyFSueeC44XuVag1wLSAQcFUF14NoGXNEE5W1ZWjzS1eAZAyO6v9PLnRwB1MK/oeD2MkjJPdI7SIx0UufTd+AvPaw7WCT1KKsbYOMkST1SU9NIOSrzS6QkT0WKFuPD5eOB+SL0Tw+9hI3uDexyFpKLRCLZWAwFrJR6r7bSGMdu5P/cIt7lOXIGvUgqG5J+lM/Sl6cXoQ1F3mSVz9+rDCZQl8yWz1ClY+TCU5wm+Dm8qp3BcodQa5joGQcrknFfSleMSoXM9O7rypH8lntIUFR5j/C6ZELXPcDBCZVqAcnlCPr8BD3LyfyTzJElauBhAkOeYCLtrQu54VnRtWs4RHg7wvQ2NJPdaV7AQqvSKcNVkx5GO6XX00+ArmmhXPLeBKtLhoOUCQN3Cjcnt+BQ1xM8KytmQA4qBlPM9OyldUJ5TRPQgvJUL6nVRvqKGq9UmuI2JX3QHyov3soR5ylYwn8kfXQFP1App1J54TBaoujaiOEfVBE3UDGQml+5EPog4UQpbVvVE9lCUbRohvTKFZVAyntuMzOELpuDDcwYBT6VZV76g5TW1yDOVLW6bOV4boQhqr93VV5eScH6KQ1hHv2UdatWzk+pULQRMpLb5Q4E56qcPjoklN/BIdHVOpuQbK0dAnseDwYTyhwRWHC5DuqO7T8Lkeiyl44BrXdR1+UK1uCZkQiNV/CUMw+gBdWYSq9xyPZF21ru9R4T7C03GXDAVpsgR0RtCIWCMRhDvrhGVmiBEoemyXDg56JejPi+04FrRODCNqv6qFkYA6IjcERQsrYg8plYDkJaogzhSMId2U9Q0Db4ChdXJRVely2M8yoW0iOQh9CxAX5TXElTihKkFA9kErA7KQRNBgCa5iax8YT5ToqJRLBhBNdCcapnkx7JwSsHKUD3CHoPGZ4/7lTGow9lhC1mAcH7IKpKKuHwgXvU9DDWXJGDhTMvIgGe0oV9YRBbnumF427T1UdRWLQ1ju5St9XX/AGq2kRIEqxYxoE7oU1ILacJS+eUEH45TmVSOmFhPL4M4hSiqORCGqFhGVAwgExn5RjD/AN4XKvdU+PuuTgAu2SxD0aBc7YBgCJ6I24Hpj3RFphs9SunpeEdRDRAITGtSuykfgYW6PENZx4ChsmS8EnquL0O6sQ5gHdEGr3SBHwiGE/CGpn0/CfTqdYQZNUZjKgYyFPukQoKrPdLoYIBkqU0JQtGpACIZVKA1zqcDonsiE0GSB9Uj8BZPUD3Y7IVjEQ8SkiMo5S1CsYuLQDkn5CkoCclSOCpwA9dhIkE/ZClvd30hWNM4IKGfytYyE05HdV9VkThXNsEK9klT1DyKF0zjI7dlM1u7jnsjH0hBHXuoAMGMEdfhS1FJDGiDKnNaMZQT67ozCb5x4UuHGsqd8eyY+pCE80zEDPyi6WmO6vGe0n81Pf5c4/YxweO/3Q9eoAZBIPXsrb+GsYIJcUwOE7drfmFy3/Wz+QeKltWf7lytw6O32C5D/fX/AMDy/9k="
-             class="floppa"
-            >
+            <main-text>omg floppa</main-text>
+            <img src="static/images/floppa.jpeg" class="floppa">
         </div>
     </div>
 
