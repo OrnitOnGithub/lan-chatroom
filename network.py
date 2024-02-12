@@ -181,41 +181,44 @@ def listen():
     while True:
         conn, _ = server_socket.accept()  # Accept a new connection
         while True:
-            data = conn.recv(2048)  # Receive up to 2048 bytes of data. That's a lot of data!
+            data = conn.recv(4096)  # Receive up to 2048 bytes of data. That's a lot of data!
             if not data:
                 break  # No more data from peer, this is some sort of mistake, exit the loop
             
-            # Now we need to handle the data recieved!
-            data = data.decode('utf-8')
-            data = json.loads(data)
-            # This is the data recieved.
-            username = data['username']
-            colour = data['colour']
-            time = data['time']
-            message_content = data['message']
-            recieved_test_phrase = data['test_phrase']
-            # Now we must check for the validity of the message before letting it through
-            # We need to check for validity of:
-            # - username
-            #   - between 3-20 characters, no newlines
-            # - colour
-            # - encryption test phrase
-            valid = True # To be set to false if a test fails
-            # Check if the decrypted test phrase matches ours.
-            # If it does it means the encryption key is correct.
-            if decrypt(recieved_test_phrase, key) != test_phrase:
-                valid = False
-            # If any of the fields are empty, message is invalid.
-            for x in data:
-                if not data[x]:
+            try:
+                # Now we need to handle the data recieved!
+                data = data.decode('utf-8')
+                data = json.loads(data)
+                # This is the data recieved.
+                username = data['username']
+                colour = data['colour']
+                time = data['time']
+                message_content = data['message']
+                recieved_test_phrase = data['test_phrase']
+                # Now we must check for the validity of the message before letting it through
+                # We need to check for validity of:
+                # - username
+                #   - between 3-20 characters, no newlines
+                # - colour
+                # - encryption test phrase
+                valid = True # To be set to false if a test fails
+                # Check if the decrypted test phrase matches ours.
+                # If it does it means the encryption key is correct.
+                if decrypt(recieved_test_phrase, key) != test_phrase:
                     valid = False
-            # If the username is invalid, censor it.
-            if not username_is_valid(username):
-                username = "Illegal Username"
-            # Check if the user sent a valid colour. Yes these are hardcoded sorry.
-            if not colour in ["/D", "/R", "/O", "/Y", "/G", "/B", "/P"]:
-                valid = False
-            # Finally, add the approved message to the messages variable.
-            if valid:
-                messages += f"\n{colour}[{time}] ({username}) {decrypt(message_content, key)}"
+                # If any of the fields are empty, message is invalid.
+                for x in data:
+                    if not data[x]:
+                        valid = False
+                # If the username is invalid, censor it.
+                if not username_is_valid(username):
+                    username = "Illegal Username"
+                # Check if the user sent a valid colour. Yes these are hardcoded sorry.
+                if not colour in ["/D", "/R", "/O", "/Y", "/G", "/B", "/P"]:
+                    valid = False
+                # Finally, add the approved message to the messages variable.
+                if valid:
+                    messages += f"\n{colour}[{time}] ({username}) {decrypt(message_content, key)}"
+            except Exception as e:
+                print(e)
         conn.close()  # Close connection after processing message.
