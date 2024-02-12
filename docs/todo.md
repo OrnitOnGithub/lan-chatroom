@@ -9,6 +9,7 @@
   - [x] Rewrite network.py
     - Switch to TCP
   - [x] Encrypt
+- [ ] Use # of github commits as version naming, have the script check online VS locally and determine wether you're up to date.
 - [ ] Make pinging also check for correct encryption key
 - [ ] Maybe add a thing that shows the version number (commit number) and the latest version online (through a web scraper) on the frontent (html).
 - [ ] Write docs
