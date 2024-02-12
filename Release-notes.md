@@ -1,10 +1,10 @@
 # Release notes
 
-## (12/02/24)
+## v64 (12/02/24)
 
-Added version naming
+Added version naming.
 
-## (10/02/24)
+## vUnknown (10/02/24)
 
 ### Simple Stuff (for you buffoons)
 

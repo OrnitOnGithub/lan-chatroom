@@ -13,4 +13,4 @@
 - [ ] Write docs
 - [ ] Asymmetric encryption
 - [ ] Add a dark mode toggle
-- [ ] Some form of versioning?
+- [x] Some form of versioning?
