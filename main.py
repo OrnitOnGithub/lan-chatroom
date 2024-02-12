@@ -83,3 +83,6 @@ if __name__ == '__main__':
             sys.exit(130)
         except SystemExit:
             os._exit(130)
+
+    except Exception as e:
+        print(e)
