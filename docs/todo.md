@@ -7,5 +7,10 @@
 - [x] Colour
 - [x] Encryption
   - [x] Rewrite network.py
+    - Switch to TCP
+  - [x] Encrypt
+- [ ] Make pinging also check for correct encryption key
+- [ ] Maybe add a thing that shows the version number (commit number) and the latest version online (through a web scraper) on the frontent (html).
 - [ ] Write docs
 - [ ] Asymmetric encryption
+- [ ] Add a dark mode toggle
