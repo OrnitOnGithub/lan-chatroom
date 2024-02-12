@@ -1,6 +1,10 @@
 # Release notes
 
-## Latest Features (10/02/24)
+## (12/02/24)
+
+Added version naming
+
+## (10/02/24)
 
 ### Simple Stuff (for you buffoons)
 

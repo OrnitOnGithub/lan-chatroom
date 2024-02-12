@@ -121,6 +121,37 @@
                     setInterval(refreshOnlineUsers, 2000);
                 </script>
             </div>
+            <h1>Version</h1>
+            <main-text>
+                Local: <br>
+                v<span id="localupdatenumber"></span> <br>
+                Remote: <br>
+                v<span id="remoteupdatenumber"></span> <br>
+                <br>
+                You are <span id="versiondifference"></span> versions behind.
+            </main-text>
+            <script>
+                const updateText = document.getElementById("localupdatenumber");
+                fetch("{{ url_for('static', filename='version.txt') }}")
+                    .then((res) => res.text())
+                    .then((text) => {
+                        updateText.textContent = text;
+                        const localVersion = text;
+            
+                        fetch('/get_remote_version')
+                            .then(response => response.text())
+                            .then(data => {
+                                const remoteUpdateText = document.getElementById("remoteupdatenumber");
+                                remoteUpdateText.textContent = data;
+                                const remoteVersion = data;
+                                // Calculate version difference
+                                const versionDifference = remoteVersion - localVersion;
+                                document.getElementById("versiondifference").textContent = versionDifference;
+                            })
+                            .catch((e) => console.error(e));
+                    })
+                    .catch((e) => console.error(e));
+            </script>
             <h1>Information</h1>
             <div class="debug-bordered padded">
                 <main-text>

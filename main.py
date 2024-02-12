@@ -3,6 +3,7 @@ from datetime import datetime
 import network as net
 import webbrowser
 import threading
+import dev.version as version
 import time
 import json
 import sys
@@ -59,6 +60,10 @@ def refresh_text():
 def refresh_online_users():
     online_users = '\n'.join(user_list)
     return online_users
+
+@app.route('/get_remote_version')
+def get_remote_version():
+    return version.fetch_remote_version()
 
 
 if __name__ == '__main__':
