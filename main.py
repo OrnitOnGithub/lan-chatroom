@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request
-from datetime import datetime
+import dev.version as version
 import network as net
 import webbrowser
 import threading
-import dev.version as version
 import time
 import json
 import sys
@@ -17,29 +16,20 @@ with open("settings.json", "r") as settings_file:
     open_browser = settings["open_browser"]
     browser = settings["browser"]
 
+app = Flask(__name__) # God knows what this does
+user_list = []        # List of online users, provided by net.user_list
 
-
-app = Flask(__name__)
-user_list = []
-
-
-def sendmsg(msg):
-    net.send(msg)
-
-def listen():
-    net.listen()
 
 def update_user_list():
     global user_list
     # Start the receive_ping function in a separate thread.
-    ping_thread = threading.Thread(target=net.receive_ping)
-    ping_thread.start()
+    ping_thr = threading.Thread(target=net.receive_ping)
+    ping_thr.start()
 
     while True:
-        user_list = [user['username'] for user in net.user_list] # Just a raw list of all users
+        user_list = [user['username'] for user in net.user_list] # Get list of all users
         time.sleep(1)
         net.ping(username) # broadcast your username
-
 
 
 @app.route('/')
@@ -49,7 +39,7 @@ def index():
 @app.route('/add_text', methods=['POST'])
 def add_text():
     text = request.form['text'] 
-    sendmsg(text)
+    net.send(text)
     return render_template('index.html', file_content=net.messages)
 
 @app.route('/refresh_text')
@@ -68,20 +58,21 @@ def get_remote_version():
 
 if __name__ == '__main__':
     try:
-        listen_thread = threading.Thread(target=listen)
-        listen_thread.start()
-        ping_thread = threading.Thread(target=update_user_list)
-        ping_thread.start()
+        listen_thr = threading.Thread(target=net.listen)
+        listen_thr.start()
+        ping_thr = threading.Thread(target=update_user_list)
+        ping_thr.start()
 
         if open_browser:
             webbrowser.get(browser).open('http://127.0.0.1:5000')
 
         # Run the Flask app in a separate thread
-        flask_thread = threading.Thread(target=app.run, kwargs={'debug': False, 'use_reloader': False, 'threaded': True})
-        flask_thread.start()
-        listen_thread.join()
-        flask_thread.join()
-        ping_thread.join()
+        flask_thr = threading.Thread(target=app.run,
+                                     kwargs={'debug': False, 'use_reloader': False, 'threaded': True})
+        flask_thr.start()
+        listen_thr.join()
+        flask_thr.join()
+        ping_thr.join()
 
     except KeyboardInterrupt: # Ctrl+C
         try:
@@ -90,4 +81,4 @@ if __name__ == '__main__':
             os._exit(130)
 
     except Exception as e:
-        print(e)
+        print("\n"+e+"\n")
