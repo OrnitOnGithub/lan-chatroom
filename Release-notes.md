@@ -1,5 +1,11 @@
 # Release notes
 
+## v67 (14/02/24)
+
+Made the UI actually scalable (rem instead of vw for scale of text)
+
+This is probably one of the last (frequent) updates.
+
 ## v64 (12/02/24)
 
 Added version naming.

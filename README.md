@@ -2,6 +2,8 @@
 
 This is a LAN chatroom made by your beloved Ornithopter747. It is made to be used in a completely decentralised way on a single network, allowing peer-to-peer chatting without any (external) servers.
 
+This software is no longer being updated, at least not frequently.
+
 ![](docs/lan-chatroom.png)
 
 ## Table of contents
