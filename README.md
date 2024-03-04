@@ -156,7 +156,7 @@ You can run the update script:
 python3 update.py
 ```
 
-This script updates and saves your config file.
+This script updates and saves your config file. It however does not save key.txt.
 
 ## Plans for the Future
 
