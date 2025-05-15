@@ -1,11 +1,20 @@
+print("test")
 from flask import Flask, render_template, request
+print("test1")
 import dev.version as version
+print("test2")
 import network as net
+print("test3")
 import webbrowser
+print("test4")
 import threading
+print("test5")
 import time
+print("test6")
 import json
+print("test7")
 import sys
+print("test8")
 import os
 
 # Load settings from settings.json file.
@@ -44,7 +53,7 @@ def add_text():
 
 @app.route('/refresh_text')
 def refresh_text():
-    return net.messages
+    return str(net.unread_message_count) + net.messages
 # Maybe in the future refresh_text and refresh_online_users can be put together.
 @app.route('/refresh_online_users')
 def refresh_online_users():

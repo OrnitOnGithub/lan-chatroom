@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chat</title>
+    <title id="title">Chat</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
@@ -17,7 +17,20 @@
                         .then(response => response.text())
                         .then(data => {
                             // Split into lines
-                            const lines = data.split('\n');
+                            var lines = data.split('\n');
+
+                            const numberText = lines[0];
+                            const numberInt = parseInt(numberText);
+                            // Update unread message count
+                            const title = document.getElementById('title');
+                            if (numberInt > 0) {
+                                title.innerHTML = "(" + numberInt + ") Chat";
+                            } else {
+                                title.innerHTML = "Chat";
+                            }
+
+                            delete lines[0]
+
                             // Get the container where the text will be displayed
                             const contentElement = document.getElementById('file-content');
                             // Clear the current content
@@ -60,17 +73,24 @@
                             });
                         });
 
-                        // Scroll to the bottom
-                        var scrollBoxContainer = document.getElementById('chatbox-container');
-                        scrollBoxContainer.scrollTop = scrollBoxContainer.scrollHeight;
+                        // Scroll to the bottom, if autoscroll is on
+                        var autoScroll = document.querySelector('.scrollCheckbox').checked;
+                        if (autoScroll) {
+                            var scrollBoxContainer = document.getElementById('chatbox-container');
+                            scrollBoxContainer.scrollTop = scrollBoxContainer.scrollHeight;
+                        }
                     }
 
                     setInterval(refreshText,  1000);
                 </script>
             </div>
+            <div class="scrollCheckboxDiv">
+                <input class="scrollCheckbox" type="checkbox" checked>
+                <main-text class="scrollCheckboxText">Auto scroll down</main-text>
+            </div>
             <form method="post" action="{{ url_for('add_text') }}" autocomplete="off" class="padded">
                 <input type="text" id="text" name="text"
-                class="padded textbox" required autocomplete="off">
+                class="paddedtextbox" required autocomplete="off">
             </form>
             <script>
                 // SOLUTION COURTESY OF ERDABERDA/ChatGPT
@@ -82,6 +102,8 @@
                 event.preventDefault(); // Prevent the default form submission
     
                 const textInput = document.getElementById('text');
+
+
                 const textValue = textInput.value;
                 
                 textInput.value = ''; // Stop spamming

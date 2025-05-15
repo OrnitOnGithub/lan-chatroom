@@ -1,5 +1,9 @@
 # Release notes
 
+## v70 experimental (15/05/25)
+
+Added unread message count in titlebar, and made automatic scrolling to the bottom optional with a checkbox.
+
 ## v67 (14/02/24)
 
 Made the UI actually scalable (rem instead of vw for scale of text)

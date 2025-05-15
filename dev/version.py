@@ -21,4 +21,4 @@ def fetch_remote_version():
     return f'{github_commits}'
 
 # Test
-print(fetch_remote_version())
+#print(fetch_remote_version())

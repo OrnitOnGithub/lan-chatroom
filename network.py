@@ -5,6 +5,7 @@ import json
 import time
 
 messages = ""
+unread_message_count = 0
 test_phrase = "The quick brown fox jumps over the lazy dog"
 
 with open("settings.json", "r") as settings_file:
@@ -85,15 +86,17 @@ def receive_ping():
     """
     global last_execution_time
     global user_list
+    global username
+    global unread_message_count
 
     server_socket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     server_socket.bind(('0.0.0.0', PING_PORT))
 
     while True:
         data, addr = server_socket.recvfrom(1024)
-        username = data.decode('utf-8')
-        if not username_is_valid(username): # If username is invalid
-            username = "Illegal Username"
+        new_username = data.decode('utf-8')
+        if not username_is_valid(new_username): # If username is invalid
+            new_username = "Illegal Username"
         user_ip = addr[0]  # Extract the IP address from the 'addr' tuple
 
         user_found = False
@@ -103,7 +106,7 @@ def receive_ping():
                 user_found = True
                 break
         if not user_found:
-            user_list.append({"username": username, "time_since_ping": TIMEOUT, "ip": user_ip})
+            user_list.append({"username": new_username, "time_since_ping": TIMEOUT, "ip": user_ip})
 
         current_time = time.time()
         if current_time - last_execution_time >  1:
@@ -169,8 +172,10 @@ def listen():
     If all tests pass, the message is formatted,
     recieved and appended to the `messages` var.
     """
+    global unread_message_count
     global test_phrase
     global colourlist
+    global username
     global messages
     global key
 
@@ -190,7 +195,7 @@ def listen():
                 data = data.decode('utf-8')
                 data = json.loads(data)
                 # This is the data recieved.
-                username = data['username']
+                new_username = data['username']
                 colour = data['colour']
                 time = data['time']
                 message_content = data['message']
@@ -211,14 +216,23 @@ def listen():
                     if not data[x]:
                         valid = False
                 # If the username is invalid, censor it.
-                if not username_is_valid(username):
-                    username = "Illegal Username"
+                if not username_is_valid(new_username):
+                    new_username = "Illegal Username"
                 # Check if the user sent a valid colour. Yes these are hardcoded sorry.
                 if not colour in ["/D", "/R", "/O", "/Y", "/G", "/B", "/P"]:
                     valid = False
                 # Finally, add the approved message to the messages variable.
                 if valid:
-                    messages += f"\n{colour}[{time}] ({username}) {decrypt(message_content, key)}"
+                    messages += f"\n{colour}[{time}] ({new_username}) {decrypt(message_content, key)}"
+
+                # Finally finally, update the unread message count
+                if username == new_username:
+                    # If you sent a message, reset unread message count.
+                    unread_message_count = 0
+                else:
+                    unread_message_count += 1
+
+
             except Exception as e:
                 print(e)
         conn.close()  # Close connection after processing message.
