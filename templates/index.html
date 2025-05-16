@@ -144,14 +144,16 @@
                 </script>
             </div>
             <h1>Version</h1>
-            <main-text>
-                Local: <br>
-                v<span id="localupdatenumber"></span> <br>
-                Remote: <br>
-                v<span id="remoteupdatenumber"></span> <br>
-                <br>
-                You are <span id="versiondifference"></span> versions behind.
-            </main-text>
+            <div class="padded">
+                <main-text>
+                    Local: <br>
+                    v<span id="localupdatenumber"></span> <br>
+                    Remote: <br>
+                    v<span id="remoteupdatenumber"></span> <br>
+                    <br>
+                    You are [<span id="versiondifference"></span>] versions behind.
+                </main-text>
+            </div>
             <script>
                 const updateText = document.getElementById("localupdatenumber");
                 fetch("{{ url_for('static', filename='version.txt') }}")

@@ -12,6 +12,8 @@
     - Switch to TCP
   - [x] Encrypt
 - [x] Some form of versioning?
+- [x] Ability to disable annoying autoscroll (duct tape fix)
+- [x] Browser title bar notifications
 - [ ] Write docs
 
 ## I won't do these, but if a contributor wants to, sure.
@@ -24,6 +26,7 @@
   - Instead of polling, the frontent should be updated every time a new message is recieved.
 - [ ] Line wrapping in the UI
 - [ ] Make the UI look nicer
+
 ## This WON'T be done
 
 - Banning users

@@ -1,21 +1,34 @@
-print("test")
-from flask import Flask, render_template, request
-print("test1")
-import dev.version as version
-print("test2")
-import network as net
-print("test3")
-import webbrowser
-print("test4")
-import threading
-print("test5")
-import time
-print("test6")
-import json
-print("test7")
 import sys
-print("test8")
 import os
+try:
+    from flask import Flask, render_template, request
+except Exception as e:
+    print("Failed to import Flask. You may need to install Flask.")
+    user_input = input("Do you wish to install it now through pip? (y/n):")
+    if user_input.lower() == "y":
+        os.system("pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org flask --user --break-system-packages")
+        print("")
+    else:
+        sys.exit()
+
+try:
+    import requests
+except Exception as e:
+    print("Failed to import Requests. You may need to install Requests.")
+    user_input = input("Do you wish to install it now through pip? (y/n):")
+    if user_input.lower() == "y":
+        os.system("pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org requests --user --break-system-packages")
+        print("")
+    else:
+        sys.exit()
+
+from flask import Flask, render_template, request
+import dev.version as version
+import network as net
+import webbrowser
+import threading
+import time
+import json
 
 # Load settings from settings.json file.
 with open("settings.json", "r") as settings_file:
@@ -25,7 +38,7 @@ with open("settings.json", "r") as settings_file:
     open_browser = settings["open_browser"]
     browser = settings["browser"]
 
-app = Flask(__name__) # God knows what this does
+app = Flask(__name__)
 user_list = []        # List of online users, provided by net.user_list
 
 
@@ -39,7 +52,6 @@ def update_user_list():
         user_list = [user['username'] for user in net.user_list] # Get list of all users
         time.sleep(1)
         net.ping(username) # broadcast your username
-
 
 @app.route('/')
 def index():

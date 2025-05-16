@@ -1,8 +1,8 @@
 # LAN Chatroom
 
-This is a LAN chatroom made by your beloved Ornithopter747. It is made to be used in a completely decentralised way on a single network, allowing peer-to-peer chatting without any (external) servers.
+This is a LAN chatroom made by your beloved Ornithopter747. It is made to be used in a completely decentralised way on a single network, allowing encrypted peer-to-peer chatting without any (external) servers.
 
-This software is no longer being updated, at least not frequently.
+This software is no longer being updated frequently.
 
 ![](docs/lan-chatroom.png)
 
@@ -12,8 +12,9 @@ This software is no longer being updated, at least not frequently.
   - [Table of contents](#table-of-contents)
 - [How to Use](#how-to-use)
   - [Download and Dependencies](#download-and-dependencies)
-  - [Necessary Configuration](#necessary-configuration)
-  - [Extra configuration](#extra-configuration)
+  - [Configuration](#configuration)
+    - [The file contains the following fields:](#the-file-contains-the-following-fields)
+  - [Extra configuration and info](#extra-configuration-and-info)
     - [Browsers](#browsers)
     - [Ports](#ports)
   - [Encryption](#encryption)
@@ -26,34 +27,19 @@ This software is no longer being updated, at least not frequently.
 
 # How to Use
 
-The setting up is a bit long. Sorry for the inconvenience, but I do recommend reading all of this document up until [Updating](#updating).
-
 ## Download and Dependencies
 
-Download this repository by running the following command in your terminal.
+Download this repository and open its containing folder by running the following command in your terminal.
 
 ```bash
-git clone https://github.com/ornitongithub/lan-chatroom
+git clone https://github.com/ornitongithub/lan-chatroom && cd lan-chatroom
 ```
 
+The program will prompt you to install the dependencies when you [run it](#run-it). It will do so through pip. (If you want to install them yourself manually, they are in `requirements.txt`)
 
-Open the folder you just downloaded.
+## Configuration
 
-Install Flask by running:
-
-```bash
-pip3 install flask
-```
-
-If that doesn't work, try:
-
-```bash
-pip3 install --trusted-host pypi.org --trusted-host pypi.python.org --trusted-host files.pythonhosted.org flask --user
-```
-
-## Necessary Configuration
-
-There is a configuration file called `settings.json` that looks like this:
+The configuration file is called `settings.json` and looks like this:
 
 ```json
 {
@@ -65,21 +51,7 @@ There is a configuration file called `settings.json` that looks like this:
 }
 ```
 
-This is where you can change different settings. To edit them, simply edit the field after the `:` like this:
-
-```json
-    [...]
-    "username" : "My new cool username",
-    [...]             |
-                      |
-This was changed. <---'
-```
-
-If you messed up or for any other reason want to reset, run
-
-```bash
-git reset --hard
-```
+### The file contains the following fields:
 
 `username`: a legal username is between 3-20 characters, and contains no newline characters.
 
@@ -95,9 +67,15 @@ git reset --hard
 - <span style="color:purple">purple</span>
 - <span style="color:black">black</span>
 
-## Extra configuration
+<br>
 
-(and other info)
+If you messed up or for any other reason want to reset, run:
+
+```bash
+git reset --hard
+```
+
+## Extra configuration and info
 
 **Skip this part if you're not running into errors.**
 
@@ -132,13 +110,13 @@ By the way, the key can be pretty much anything you can fit into that text file.
 
 ## Run it
 
-Run `main.py`. Either by running it in VSCode or by running
+Run `main.py`. Either by running `main.py` in VSCode or through the terminal:
 
 ```bash
 python3 main.py
 ```
 
-in your terminal. Make sure you're using python interpret 3.10+
+Make sure you're using python interpret 3.10+
 
 Normally a browser window should open automatically. If it does not, ckeck [Extra config](#extra-config).
 

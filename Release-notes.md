@@ -1,5 +1,9 @@
 # Release notes
 
+## v71 (15/05/25)
+
+Finalized version 70. Improved README. Added missing dependency, better handling of lacking dependencies (user can download within the script).
+
 ## v70 experimental (15/05/25)
 
 Added unread message count in titlebar, and made automatic scrolling to the bottom optional with a checkbox.
